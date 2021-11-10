@@ -1,23 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Home</h1>
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+@extends('layout.template')
 
-    <script src="{{ asset('js/bootstrap.js')  }}"></script>
-</body>
-</html>
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@endsection
+
+@section('content')
+    <div class="home container-fluid">
+        <div class="row">
+            <div class="sidebar col-md-2 p-4 pe-1 border rounded shadow-sm">
+                <p class="head_kategori">KATEGORI</p>
+                <div class="option">
+                    @for ($i = 0; $i < 7; $i++)
+                        <p class="item-option" data-bs-toggle="collapse" href="#collapseExample_{{ $i }}"
+                            role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Seni Rupa
+                        </p>
+                        <div class="collapse child_item" id="collapseExample_{{ $i }}">
+                            <p>Lukisan</p>
+                            <p>Lukisan</p>
+                            <p>Lukisan</p>
+                        </div>
+                    @endfor
+                </div>
+            </div>
+            <div class="content col-md-10 p-3 pt-0">
+                <div class="row p-0" data-masonry='{"percentPosition": true}'>
+                    @for ($i = 0; $i < 4; $i++)
+                        @foreach ($response as $item)
+                            <a class="col-md-3 p-1 overflow-hidden" href="/karya/1">
+                                <div class="position-relative box-image p-0 overflow-hidden">
+                                    <img src="{{ $item->urls->small }}" class="card-img-top" alt="...">
+                                    <div class="position-absolute banner-item-post p-3 d-flex m-0">
+                                        <p>Laptop on brown wooden table</p>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    @endfor
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

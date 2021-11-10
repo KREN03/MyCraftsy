@@ -1,0 +1,70 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+
+}
+
+.font-13{
+  font-size: 13px;
+}
+
+.font-14{
+  font-size: 14px;
+}
+
+.font-15{
+  font-size: 15px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.input-search {
+    outline: none !important;
+    width: 400px;
+    font-size: 15px;
+    border-radius: 20px;
+}
+
+.nav-link {
+    font-size: 15px !important;
+}
+
+.dropdown-item {
+    font-size: 13.5px !important;
+    font-weight: 300;
+    padding: 10px;
+}
+
+.image-profile {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transform: scale(1.2);
+}
+
+.home.container-fluid {
+    margin-top: 3.6rem !important;
+}
+
+.home.container{
+    margin-top: 4rem !important;
+}
