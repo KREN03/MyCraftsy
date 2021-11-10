@@ -1,0 +1,68 @@
+@import url('./color.css');
+
+.bg-primary-color {
+    background-color: var(--primary_color);
+}
+
+.login-logo {
+    width: 350px;
+}
+
+.caption-login {
+    color: white;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.form {
+    padding: 100px;
+}
+
+.button-login {
+    width: 175px;
+    height: 50px;
+    background-color: var(--primary_color);
+    border: none;
+    color: white;
+}
+
+.btn-login-google {
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    padding: 12px 20px;
+    height: 50px;
+    border: 1px solid var(--primary_color);
+}
+
+.btn-login-google:hover {
+    color: #fff;
+    background-color: var(--primary_color);
+    border-color: var(--primary_color);
+  }
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .separator::before,
+  .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #AFAFAF;
+  }
+
+  .separator:not(:empty)::before {
+    margin-right: .25em;
+  }
+
+  .separator:not(:empty)::after {
+    margin-left: .25em;
+  }

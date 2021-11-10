@@ -22,3 +22,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/karya/add', [KaryaController::class, 'add']);
 Route::get('/karya/{id}', [KaryaController::class, 'index']);
+Route::get('login', function() {
+    return view('authentication.login');
+});
