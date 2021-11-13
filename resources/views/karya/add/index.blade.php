@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="home container">
-        <form action="{{ route('add_karya') }}" method="post">
+        <form action="{{ route('add_karya') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="d-flex justify-content-center py-3">
                 <div class="col-12 col-md-9 p-0">
