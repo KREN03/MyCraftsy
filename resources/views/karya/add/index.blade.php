@@ -11,8 +11,19 @@
                 <div class="input-image-video rounded">
                     <img src="{{ asset('image/input-karya.png') }}" alt="" srcset="" id="image-input"
                         class="image-input">
-                    <video src="" frameborder="0" class="video-input" id="video-input"></video>
-                    <input type="file" id="input-file" accept="image/, video/">
+                    <video src="" frameborder="0" class="video-js" id="my-video" controls preload="auto"></video>
+                </div>
+                <div class="my-3">
+                    <div class="input-image-video-input rounded px-3 py-2 border font-15 position-relative col-md-4">
+                        <p class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload me-2" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                                <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                              </svg>
+                            Pilih Gambar atau Video
+                        </p>
+                        <input type="file" id="input-file" accept="image/, video/">
+                    </div>
                 </div>
                 <div class="my-3">
                     <label for="input_judul" class="form-label font-15 fw-bold">Judul Karya</label>
@@ -20,7 +31,7 @@
                 </div>
                 <div class="my-3">
                     <label for="" class="form-label font-15 fw-bold">Kategori</label>
-                    <div class="list-category" id="list-category">
+                    <div class="list-category current-category" id="list-category-page">
                         <div class="add-category" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-circle me-2" viewBox="0 0 16 16">
@@ -31,7 +42,7 @@
                             <p class="font-14 button-add">Tambah Kategori</p>
                         </div>
                     </div>
-                    <input type="hidden" name="kategori">
+                    <input type="hidden" name="kategori" id="kategori_list_input">
                 </div>
                 <div class="mb-3">
                     <label for="deskripsi_input" class="form-label font-15 fw-bold">Deskripsi</label>
@@ -44,19 +55,19 @@
                     <div class="d-flex justify-content-between">
                         <label class="form-check-label me-2 font-15" for="">Tidak</label>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                            <input class="form-check-input sold-art" type="checkbox" id="flexSwitchCheckChecked" checked>
                         </div>
                         <label class="form-check-label font-15" for="">Ya</label>
                     </div>
                 </div>
-                <div class="my-3">
-                    <label for="harga_jual" class="form-label font-15 fw-bold">Harga Jual</label>
-                    <div class="d-flex align-items-center col-md-3">
-                        <p class="font-14 me-2">Rp</p>
-                        <input type="text" class="form-control font-14" id="input_judul" placeholder="">
+                <div class="my-3" id="pembayaran">
+                    <div class="my-3">
+                        <label for="harga_jual" class="form-label font-15 fw-bold">Harga Jual</label>
+                        <div class="d-flex align-items-center col-md-3">
+                            <p class="font-14 me-2">Rp</p>
+                            <input type="text" class="form-control font-14" id="input_judul" placeholder="">
+                        </div>
                     </div>
-                </div>
-                <div class="my-3">
                     <label for="penyaluran_karya" class="form-label font-15 fw-bold">Penyaluran Karya</label>
                     <div class="d-flex">
                         <div class="form-check me-2">
@@ -74,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="button-tambah-karya">Tambah</button>
+                <button class="button-tambah-karya my-3 ">Tambah</button>
             </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,52 +97,21 @@
                     </div>
                     <div class="modal-body">
                         <p class="font-14">Kategori yang digunakan</p>
-                        <div class="current-category list-category py-2">
-                            <div class="item-category p-2 px-3 border rounded">
-                                <p class="font-14">Teknologi</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                                    class="bi bi-x ms-2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </div>
-                            <div class="item-category p-2 px-3 border rounded">
-                                <p class="font-14">Sains</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                                    class="bi bi-x ms-2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </div>
-                            <div class="item-category p-2 px-3 border rounded">
-                                <p class="font-14">Seni Rupa</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                                    class="bi bi-x ms-2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </div>
-                            <div class="item-category p-2 px-3 border rounded">
-                                <p class="font-14">UI/UX</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                                    class="bi bi-x ms-2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                </svg>
-                            </div>
+                        <div class="current-category list-category py-2" id="list-category-modal">
                         </div>
                         <div class="all-category">
                             <p class="font-14 my-2">Semua Kategori</p>
-                            <input type="text" class="form-control font-14 mb-2" id="input_judul" placeholder="Cari Karya">
+                            <input type="text" class="form-control font-14 mb-2" id="input_judul"
+                                placeholder="Cari Kategori">
                             <p class="font-13 my-2 fst-italic text-danger">Klik untuk menambahkan kategori</p>
-                            <div class="list-category">
-                                <div class="item-category-v2 p-2 px-3 border rounded">
+                            <div class="list-category" id="add-list-category">
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
                                     <p class="font-14">Teknologi</p>
                                 </div>
-                                <div class="item-category-v2 p-2 px-3 border rounded">
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
                                     <p class="font-14">Sains</p>
                                 </div>
-                                <div class="item-category-v2 p-2 px-3 border rounded">
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
                                     <p class="font-14">Seni Rupa</p>
                                 </div>
                             </div>
@@ -148,42 +128,5 @@
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function() {
-            var input = document.getElementById("input-file");
-            var image = document.getElementById("image-input");
-            var video = document.getElementById("video-input");
-            input.onchange = evt => {
-                const [file] = input.files;
-                if (file) {
-                    const type = file.type.split('/')[0];
-                    if (type === "image") {
-                        image.src = URL.createObjectURL(file);
-                    }
-                    if (type === "video") {
-                        image.style.display = "none"
-                        video.src = URL.createObjectURL(file);
-                        video.style.width = "100%";
-                        video.style.height = "500px";
-                        video.style.top = "0";
-                    }
-                }
-            }
-            function onTest(params) {
-                console.log("DAMN");
-            }
-
-            const data = ["Teknologi", "Sains", "UI/UX"];
-            data.map(el => {
-                const element = `
-                        <div class="item-category p-2 px-3 border rounded" onclick="${() => onTest()}">
-                            <p class="font-14">${el}</p>
-                        </div>
-                `;
-                $("#list-category").append(element);
-            });
-
-
-        });
-    </script>
+    <script src="{{ asset('js/add-karya.js') }}"></script>
 @endsection
