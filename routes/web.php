@@ -20,5 +20,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/karya/add', [KaryaController::class, 'add']);
-Route::get('/karya/{id}', [KaryaController::class, 'index']);
+Route::get('/karya/add', [KaryaController::class, 'add'])->name('view_add_karya');
+Route::post('/karya/add', [KaryaController::class, 'store'])->name('add_karya');
+Route::get('/karya/{id}', [KaryaController::class, 'index'])->name('detail_karya');
