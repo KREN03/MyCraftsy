@@ -18,4 +18,9 @@ class Work extends Model
         'file',
         'type'
     ];
+
+    public function category()
+    {
+        return $this->belongsToMany(Category::class, 'category_works');
+    }
 }

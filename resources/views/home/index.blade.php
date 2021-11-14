@@ -10,7 +10,12 @@
             <div class="sidebar col-md-2 p-4 pe-1 border rounded shadow-sm">
                 <p class="head_kategori">KATEGORI</p>
                 <div class="option">
-                    @for ($i = 0; $i < 7; $i++)
+                    @foreach ($categories as $category)
+                        <a href="{{ route('home', 'id=' . $category->id) }}" class="d-block text-black text-decoration-none mt-2">
+                            {{ $category->name }}
+                        </a>
+                    @endforeach
+                    {{-- @for ($i = 0; $i < 7; $i++)
                         <p class="item-option" data-bs-toggle="collapse" href="#collapseExample_{{ $i }}"
                             role="button" aria-expanded="false" aria-controls="collapseExample">
                             Seni Rupa
@@ -20,25 +25,15 @@
                             <p>Lukisan</p>
                             <p>Lukisan</p>
                         </div>
-                    @endfor
+                    @endfor --}}
                 </div>
             </div>
             <div class="content col-md-10 p-3 pt-0">
-                <div class="grid p-0">
+                <div class="row p-0" data-masonry='{"percentPosition": true}'>
                     @foreach ($data as $item)
-                        <a class="col-md-3 p-1 overflow-hidden grid-item" href="/karya/1">
+                        <a class="col-md-3 p-1 overflow-hidden" href="/karya/1">
                             <div class="position-relative box-image p-0 overflow-hidden">
-                                <img src="{{ Storage::url('karya/' . $item->file) }}" class="card-img-top">
-                                <div class="position-absolute banner-item-post p-3 d-flex m-0">
-                                    <p>{{ $item->title }}</p>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
-                    @foreach ($response as $item)
-                        <a class="col-md-3 p-1 overflow-hidden d-inline-block grid-item" href="/karya/1">
-                            <div class="position-relative box-image p-0 overflow-hidden">
-                                <img src="{{ $item->urls->small }}" class="card-img-top" alt="..." title="A">
+                                <img src="{{ Storage::url('karya/' . $item->file) }}" srcset="" class="card-img-top" loading="lazy">
                                 <div class="position-absolute banner-item-post p-3 d-flex m-0">
                                     <p>Laptop on brown wooden table</p>
                                 </div>
@@ -49,8 +44,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('js/home.js') }}"></script>
 @endsection

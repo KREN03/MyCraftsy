@@ -75,8 +75,8 @@
                                 <input type="text" class="form-control font-14" id="input_judul" placeholder="" name="price">
                             </div>
                         </div>
-                        <label for="penyaluran_karya" class="form-label font-15 fw-bold">Penyaluran Karya</label>
-                        <div class="d-flex">
+                        {{-- <label for="penyaluran_karya" class="form-label font-15 fw-bold">Penyaluran Karya</label> --}}
+                        {{-- <div class="d-flex">
                             <div class="form-check me-2">
                                 <input class="form-check-input" type="radio" name="penyaluran_karya" id="flexRadioDefault2"
                                     checked value="download">
@@ -90,7 +90,7 @@
                                     Jasa Pengiriman
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <button class="button-tambah-karya my-3" type="submit">Tambah</button>
                 </div>
@@ -114,14 +114,14 @@
                                 placeholder="Cari Kategori">
                             <p class="font-13 my-2 fst-italic text-danger">Klik untuk menambahkan kategori</p>
                             <div class="list-category" id="add-list-category">
-                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
-                                    <p class="font-14">Teknologi</p>
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="1">
+                                    <p class="font-14" data="1">Teknologi</p>
                                 </div>
-                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
-                                    <p class="font-14">Sains</p>
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="2">
+                                    <p class="font-14" data="2">Sains</p>
                                 </div>
-                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
-                                    <p class="font-14">Seni Rupa</p>
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="3">
+                                    <p class="font-14" data="3">Seni Rupa</p>
                                 </div>
                             </div>
                         </div>
