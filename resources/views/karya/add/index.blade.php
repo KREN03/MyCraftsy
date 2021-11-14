@@ -128,7 +128,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary font-14" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary font-14">Save changes</button>
                     </div>
                 </div>
             </div>
