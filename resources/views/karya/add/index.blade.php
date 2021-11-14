@@ -114,14 +114,14 @@
                                 placeholder="Cari Kategori">
                             <p class="font-13 my-2 fst-italic text-danger">Klik untuk menambahkan kategori</p>
                             <div class="list-category" id="add-list-category">
-                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
-                                    <p class="font-14">Teknologi</p>
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="1">
+                                    <p class="font-14" data="1">Teknologi</p>
                                 </div>
-                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
-                                    <p class="font-14">Sains</p>
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="2">
+                                    <p class="font-14" data="2">Sains</p>
                                 </div>
-                                <div class="item-category-v2 p-2 px-3 border rounded" data="AC">
-                                    <p class="font-14">Seni Rupa</p>
+                                <div class="item-category-v2 p-2 px-3 border rounded" data="3">
+                                    <p class="font-14" data="3">Seni Rupa</p>
                                 </div>
                             </div>
                         </div>

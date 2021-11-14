@@ -35,16 +35,6 @@
                             </div>
                         </a>
                     @endforeach
-                    @foreach ($response as $item)
-                        <a class="col-md-3 p-1 overflow-hidden d-inline-block grid-item" href="/karya/1">
-                            <div class="position-relative box-image p-0 overflow-hidden">
-                                <img src="{{ $item->urls->small }}" class="card-img-top" alt="..." title="A">
-                                <div class="position-absolute banner-item-post p-3 d-flex m-0">
-                                    <p>Laptop on brown wooden table</p>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
                 </div>
             </div>
         </div>
