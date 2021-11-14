@@ -55,3 +55,11 @@
     margin: 0;
     transition: all 1s;
 }
+
+.grid-item{
+    width: 265px;
+}
+
+.grid-item img{
+    width: 100%;
+}
