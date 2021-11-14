@@ -25,6 +25,16 @@
             </div>
             <div class="content col-md-10 p-3 pt-0">
                 <div class="row p-0" data-masonry='{"percentPosition": true}'>
+                    @foreach ($data as $item)
+                        <a class="col-md-3 p-1 overflow-hidden" href="/karya/1">
+                            <div class="position-relative box-image p-0 overflow-hidden">
+                                <img src="{{ Storage::url('karya/' . $item->file) }}" srcset="" class="card-img-top" loading="lazy">
+                                <div class="position-absolute banner-item-post p-3 d-flex m-0">
+                                    <p>Laptop on brown wooden table</p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
                     @for ($i = 0; $i < 4; $i++)
                         @foreach ($response as $item)
                             <a class="col-md-3 p-1 overflow-hidden" href="/karya/1">
