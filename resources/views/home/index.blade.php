@@ -27,8 +27,12 @@
                 <div class="grid p-0">
                     @foreach ($data as $item)
                         <a class="col-md-3 p-1 overflow-hidden grid-item" href="/karya/1">
-                            <div class="position-relative box-image p-0 overflow-hidden">
-                                <img src="{{ Storage::url('karya/' . $item->file) }}" class="card-img-top">
+                            <div class="position-relative box-image p-0 overflow-hidden type-{{$item->type}}">
+                                @if ($item->type == 'video')
+                                    <video src="{{ Storage::url('karya/' . $item->file) }}" class="video-js" id="my-video" muted loop></video>
+                                @else
+                                    <img src="{{ Storage::url('karya/' . $item->file) }}" class="card-img-top">
+                                @endif
                                 <div class="position-absolute banner-item-post p-3 d-flex m-0">
                                     <p>{{ $item->title }}</p>
                                 </div>
