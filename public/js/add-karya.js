@@ -68,11 +68,10 @@ $(document).ready(function () {
 
         $("#kategori_list_input").val(data.join(","));
     });
-
+    $(".sold-art")[0].checked = false;
     $(".sold-art").change(function (params) {
         var check = params.target.checked;
         check ? $("#pembayaran").show() : $("#pembayaran").hide();
+        check ? $("#is_sell").val(true) : $("#is_sell").val(false);
     });
-y.val(false);
-    })
->>>>>>> 1949873984c439839f241d806c4bebef97790873
+});
