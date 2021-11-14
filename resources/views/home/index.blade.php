@@ -10,7 +10,15 @@
             <div class="sidebar col-md-2 p-4 pe-1 border rounded shadow-sm">
                 <p class="head_kategori">KATEGORI</p>
                 <div class="option">
-                    @for ($i = 0; $i < 7; $i++)
+                    <a href="{{ route('home') }}" class="d-block text-decoration-none mt-2 link-kategori">
+                        Semua
+                    </a>
+                    @foreach ($categories as $category)
+                    <a href="{{ route('home', 'id=' . $category->id) }}" class="d-block text-decoration-none mt-2 link-kategori">
+                        {{ $category->name }}
+                    </a>
+                    @endforeach
+                    {{-- @for ($i = 0; $i < 7; $i++)
                         <p class="item-option" data-bs-toggle="collapse" href="#collapseExample_{{ $i }}"
                             role="button" aria-expanded="false" aria-controls="collapseExample">
                             Seni Rupa
@@ -20,7 +28,7 @@
                             <p>Lukisan</p>
                             <p>Lukisan</p>
                         </div>
-                    @endfor
+                    @endfor --}}
                 </div>
             </div>
             <div class="content col-md-10 p-3 pt-0">
