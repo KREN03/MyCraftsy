@@ -42,7 +42,7 @@ class KaryaController extends Controller
                 'is_sell' => true,
                 'price' => $request->price,
                 'file' => $file_name,
-                'type' => $file->getClientOriginalExtension(),
+                'type' => explode('/', $request->file->getMimeType())[0],
             ]);
 
             foreach ($category as $key) {
@@ -56,7 +56,7 @@ class KaryaController extends Controller
                 'is_sell' => false,
                 'price' => 0,
                 'file' => $file_name,
-                'type' => $file->getClientOriginalExtension(),
+                'type' => explode('/', $request->file->getMimeType())[0],
             ]);
 
             foreach ($category as $key) {
