@@ -75,8 +75,8 @@
                                 <input type="text" class="form-control font-14" id="input_judul" placeholder="" name="price">
                             </div>
                         </div>
-                        <label for="penyaluran_karya" class="form-label font-15 fw-bold">Penyaluran Karya</label>
-                        <div class="d-flex">
+                        {{-- <label for="penyaluran_karya" class="form-label font-15 fw-bold">Penyaluran Karya</label> --}}
+                        {{-- <div class="d-flex">
                             <div class="form-check me-2">
                                 <input class="form-check-input" type="radio" name="penyaluran_karya" id="flexRadioDefault2"
                                     checked value="download">
@@ -90,7 +90,7 @@
                                     Jasa Pengiriman
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <button class="button-tambah-karya my-3" type="submit">Tambah</button>
                 </div>

@@ -24,6 +24,7 @@ class KaryaController extends Controller
             'title' => 'required',
             'description' => 'required',
             'is_sell' => 'required',
+            'category' => 'required',
             'file' => 'required',
         ]);
 
@@ -31,10 +32,11 @@ class KaryaController extends Controller
         $file_name = time() . "." . $file->getClientOriginalExtension();
 
         $file->storeAs("public/karya", $file_name);
-        // $file->move('karya/', $file_name);
+
+        $category = explode(',', $request->category);
 
         if ($request->is_sell == "true") {
-            Work::create([
+            $data = Work::create([
                 'title' => $request->title,
                 'description' => $request->description,
                 'is_sell' => true,
@@ -42,8 +44,13 @@ class KaryaController extends Controller
                 'file' => $file_name,
                 'type' => $file->getClientOriginalExtension(),
             ]);
+
+            foreach ($category as $key) {
+                $data->category()->attach($key);
+            }
+
         } else if($request->is_sell == "false"){
-            Work::create([
+            $data = Work::create([
                 'title' => $request->title,
                 'description' => $request->description,
                 'is_sell' => false,
@@ -51,6 +58,10 @@ class KaryaController extends Controller
                 'file' => $file_name,
                 'type' => $file->getClientOriginalExtension(),
             ]);
+
+            foreach ($category as $key) {
+                $data->category()->attach($key);
+            }
         }
 
         return back();
