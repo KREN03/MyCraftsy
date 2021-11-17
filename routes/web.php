@@ -19,9 +19,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/karya/add', [KaryaController::class, 'add']);
-Route::get('/karya/{id}', [KaryaController::class, 'index']);
-Route::get('login', function() {
-    return view('authentication.login');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/karya/add', [KaryaController::class, 'add'])->name('view_add_karya');
+Route::post('/karya/add', [KaryaController::class, 'store'])->name('add_karya');
+Route::get('/karya/{id}', [KaryaController::class, 'index'])->name('detail_karya');
+
+require __DIR__.'/auth.php';

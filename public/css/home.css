@@ -34,7 +34,7 @@
     right: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.336);
+    background: rgba(0,0,0,0.1);
     align-items: flex-end;
     cursor: pointer;
 }
@@ -54,4 +54,26 @@
 .box-image:hover .banner-item-post p{
     margin: 0;
     transition: all 1s;
+}
+
+.grid-item{
+    width: 265px;
+}
+
+.grid-item img{
+    width: 100%;
+}
+
+.link-kategori {
+    color: #000;
+    font-weight: 500;
+}
+
+.link-kategori:hover {
+    color: #1088A0;
+    transition: all .5s;
+}
+
+.banner-item-post:hover {
+    background: rgba(0, 0, 0, 0.336);
 }

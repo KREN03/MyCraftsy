@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
     @yield('css')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +23,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand" href="{{ route('home') }}">
                         <img src="{{ asset('image/MyCraftsy.png') }}" alt="" srcset="">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -126,6 +128,7 @@
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
         integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
     </script>
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
     @yield('script')
 </body>
 
