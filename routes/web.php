@@ -33,4 +33,7 @@ Route::get('/karya/{id}', [KaryaController::class, 'index'])->name('detail_karya
 Route::get('sign-in-google', [UserController::class, 'google'])->name('login.google');
 Route::get('auth/google/callback', [UserController::class, 'handleProviderCallback'])->name('google.callback');
 
+// Route::get('sign-in-facebook', [UserController::class, 'facebook'])->name('login.facebook');
+// Route::get('auth/facebook/callback', [UserController::class, 'handleProviderCallbackFB'])->name('facebook.callback');
+
 require __DIR__.'/auth.php';

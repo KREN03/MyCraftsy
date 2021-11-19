@@ -20,6 +20,11 @@ class UserController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
+    // public function facebook()
+    // {
+    //     return Socialite::driver('facebook')->redirect();
+    // }
+
     public function handleProviderCallback()
     {
         $callback = Socialite::driver('google')->stateless()->user();
@@ -35,5 +40,24 @@ class UserController extends Controller
         Auth::login($user, true);
 
         return redirect()->route('home');
+    }
+
+    public function handleProviderCallbackFB()
+    {
+        // $callback = Socialite::driver('facebook')->stateless()->user();
+        // $data = [
+        //     'name' => $callback->getName(),
+        //     'email' => $callback->getEmail(),
+        //     'avatar' => $callback->getAvatar(),
+        //     'email_verified_at' => Date::now()
+        // ];
+
+        return 'hello';
+
+        // $user = User::firstOrCreate(['email' => $data['email']], $data);
+
+        // Auth::login($user, true);
+
+        // return redirect()->route('home');
     }
 }
