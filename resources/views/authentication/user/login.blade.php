@@ -46,7 +46,7 @@
                         </div>
                     </form>
                     <div class="separator my-5">Atau</div>
-                    <a href="" class="btn-login-google w-100 rounded-pill text-decoration-none">
+                    <a href="{{ route('login.google') }}" class="btn-login-google w-100 rounded-pill text-decoration-none">
                         <img src="{{ asset('image/google.svg') }}" alt="">
                         <p class="d-inline text-button">Masuk dengan Google</p>
                     </a>
