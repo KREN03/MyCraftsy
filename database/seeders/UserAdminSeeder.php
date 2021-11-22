@@ -21,7 +21,8 @@ class UserAdminSeeder extends Seeder
             'email' => 'admin@mycraftsy.com',
             'email_verified_at' => Date::now(),
             'password' => Hash::make('rahasia'),
-            'is_admin' => true
+            'phone_number' => '+6282276858074',
+            'is_admin' => true,
         ]);
     }
 }
