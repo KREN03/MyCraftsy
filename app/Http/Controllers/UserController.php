@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -18,6 +20,27 @@ class UserController extends Controller
     public function register()
     {
         return view('authentication.user.register');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed'],
+            'phone_number' => ['required', 'string', 'max:255']
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'password' => Hash::make($request->password)
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->route('home');
     }
 
     public function google()

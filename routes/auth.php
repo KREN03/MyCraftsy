@@ -15,7 +15,10 @@ Route::get('/register', [UserController::class, 'register'])
                 ->middleware('guest')
                 ->name('register');
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
+// Route::post('/register', [RegisteredUserController::class, 'store'])
+//                 ->middleware('guest');
+
+Route::post('/register', [UserController::class, 'store'])
                 ->middleware('guest');
 
 Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');

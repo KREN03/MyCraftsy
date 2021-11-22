@@ -29,14 +29,19 @@
             <div class="col-md-7 min-vh-100 p-4">
                 <div class="form">
                     <p class="title mb-5">Registrasi</p>
-                    <form action="">
+                    <form action="{{ route('register') }}" method="POST">
+                        @csrf
                         <div class="form-group mb-4">
-                          <label for="email">Alamat Email</label>
-                          <input type="text" name="email" id="email" class="form-control rounded-pill" placeholder="">
+                          <label for="name">Nama Lengkap</label>
+                          <input type="text" name="name" id="name" class="form-control rounded-pill" placeholder="">
                         </div>
                         <div class="form-group mb-4">
-                          <label for="email">No. Telepon</label>
-                          <input type="text" name="email" id="email" class="form-control rounded-pill" placeholder="" value="+62">
+                          <label for="email">Alamat Email</label>
+                          <input type="email" name="email" id="email" class="form-control rounded-pill" placeholder="">
+                        </div>
+                        <div class="form-group mb-4">
+                          <label for="phone_number">No. Telepon</label>
+                          <input type="text" name="phone_number" id="phone_number" class="form-control rounded-pill" placeholder="" value="+62">
                         </div>
                         <div class="form-group mb-4">
                             <label for="password" class="">Kata sandi</label>
