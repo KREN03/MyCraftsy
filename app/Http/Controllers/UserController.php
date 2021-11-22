@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -37,6 +37,8 @@ class UserController extends Controller
             'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password)
         ]);
+
+        event(new Registered($user));
 
         Auth::login($user);
 
