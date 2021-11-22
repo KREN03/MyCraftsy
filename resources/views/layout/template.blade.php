@@ -59,11 +59,12 @@
                                     </span>
                                 </a>
                             </li>
+                            @auth
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                                     id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="image-profile rounded-circle overflow-hidden me-2">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg"
+                                        <img src="{{ auth()->user()->avatar ? auth()->user()->avatar : asset('image/user_default.png') }}"
                                             class="rounded-circle image-profile" alt="...">
                                     </div>
                                 </a>
@@ -101,7 +102,8 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item d-flex align-items-center" href="#">
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-box-arrow-left me-2"
                                                 viewBox="0 0 16 16">
@@ -111,9 +113,16 @@
                                                     d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
                                             </svg>
                                             Keluar
-                                        </a></li>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
+                            @else
+                            <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4">Masuk</a>
+                            @endauth
                         </ul>
                     </div>
                 </div>

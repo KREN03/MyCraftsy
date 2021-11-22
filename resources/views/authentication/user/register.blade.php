@@ -28,22 +28,31 @@
             </div>
             <div class="col-md-7 min-vh-100 p-4">
                 <div class="form">
-                    <p class="title mb-5">Masuk ke dalam <i>MyCraftsy</i></p>
-                    <form action="{{ route('login') }}" method="POST">
+                    <p class="title mb-5">Registrasi</p>
+                    <form action="{{ route('register') }}" method="POST">
                         @csrf
+                        <div class="form-group mb-4">
+                          <label for="name">Nama Lengkap</label>
+                          <input type="text" name="name" id="name" class="form-control rounded-pill" placeholder="">
+                        </div>
                         <div class="form-group mb-4">
                           <label for="email">Alamat Email</label>
                           <input type="email" name="email" id="email" class="form-control rounded-pill" placeholder="">
                         </div>
-                        <div class="form-group">
-                            <div class="d-flex justify-content-between">
-                                <label for="password" class="">Password</label>
-                                <a href="" class="text-decoration-none">Lupa Password?</a>
-                            </div>
+                        <div class="form-group mb-4">
+                          <label for="phone_number">No. Telepon</label>
+                          <input type="text" name="phone_number" id="phone_number" class="form-control rounded-pill" placeholder="" value="+62">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="password" class="">Kata sandi</label>
                           <input type="password" name="password" id="password" class="form-control rounded-pill" placeholder="">
                         </div>
+                        <div class="form-group mb-4">
+                            <label for="password_confirmation" class="">Konfirmasi Kata Sandi</label>
+                          <input type="password" name="password_confirmation" id="password_confirmation" class="form-control rounded-pill" placeholder="">
+                        </div>
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="button-login rounded-pill mt-4">Masuk</button>
+                            <button type="submit" class="button-login rounded-pill mt-4">Daftar</button>
                         </div>
                     </form>
                     <div class="separator my-5">Atau</div>
@@ -52,7 +61,7 @@
                         <p class="d-inline text-button">Masuk dengan Google</p>
                     </a>
                 </div>
-                <p class="text-center mt-3">Belum memiliki akun? <a href="{{ route('register') }}">daftar</a></p>
+                <p class="text-center mt-3">Sudah memiliki akun? <a href="{{ route('login') }}">masuk</a></p>
             </div>
         </div>
     </div>
