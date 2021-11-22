@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-7 min-vh-100 p-4">
                 <div class="form">
-                    <p class="title mb-5">Masuk ke dalam <i>MyCraftsy</i></p>
+                    <p class="title mb-5">Registrasi</p>
                     <form action="">
                         <div class="form-group mb-4">
                           <label for="">Alamat Email</label>
@@ -51,7 +51,7 @@
                         <p class="d-inline text-button">Masuk dengan Google</p>
                     </a>
                 </div>
-                <p class="text-center mt-3">Belum memiliki akun? <a href="{{ route('register') }}">daftar</a></p>
+                <p class="text-center mt-3">Belum memiliki akun? <a href="{{ route('login') }}">daftar</a></p>
             </div>
         </div>
     </div>
