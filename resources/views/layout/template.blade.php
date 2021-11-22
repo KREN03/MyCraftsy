@@ -64,7 +64,7 @@
                                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                                     id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="image-profile rounded-circle overflow-hidden me-2">
-                                        <img src="{{ auth()->user()->avatar ? auth()->user()->avatar : 'https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg' }}"
+                                        <img src="{{ auth()->user()->avatar ? auth()->user()->avatar : asset('image/user_default.png') }}"
                                             class="rounded-circle image-profile" alt="...">
                                     </div>
                                 </a>
