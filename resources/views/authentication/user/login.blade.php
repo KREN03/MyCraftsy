@@ -29,17 +29,18 @@
             <div class="col-md-7 min-vh-100 p-4">
                 <div class="form">
                     <p class="title mb-5">Masuk ke dalam <i>MyCraftsy</i></p>
-                    <form action="">
+                    <form action="{{ route('login') }}" method="POST">
+                        @csrf
                         <div class="form-group mb-4">
-                          <label for="">Alamat Email</label>
-                          <input type="text" name="" id="" class="form-control rounded-pill" placeholder="">
+                          <label for="email">Alamat Email</label>
+                          <input type="email" name="email" id="email" class="form-control rounded-pill" placeholder="">
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-between">
-                                <label for="" class="">Password</label>
+                                <label for="password" class="">Password</label>
                                 <a href="" class="text-decoration-none">Lupa Password?</a>
                             </div>
-                          <input type="text" name="" id="" class="form-control rounded-pill" placeholder="">
+                          <input type="password" name="password" id="password" class="form-control rounded-pill" placeholder="">
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="button-login rounded-pill mt-4">Masuk</button>

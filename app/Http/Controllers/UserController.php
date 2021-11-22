@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -15,6 +16,15 @@ class UserController extends Controller
     public function login()
     {
         return view('authentication.user.login');
+    }
+
+    public function loginStore(LoginRequest $request)
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->route('home');
     }
 
     public function register()
