@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class KaryaController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('karya.detail.index');
+        $data = Work::find($id);
+        return view('karya.detail.index', compact('data'));
     }
 
     public function add()

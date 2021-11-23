@@ -1,21 +1,43 @@
+let data = [];
+
 $(document).ready(function () {
     $.ajaxSetup({
         headers: {
             "X-CSRF-Token": $('meta[name="_token"]').attr("content"),
         },
     });
-    // load_data();
 
-    function load_data(keyword) {
+    load_data();
+
+
+    $("#exampleModal").on('keyup', '#input_category', function () {
+        load_data($(this).val());
+    })
+
+
+    function load_data(keyword = "") {
+        $("#add-list-category").children().remove();
         $.ajax({
             method: "POST",
             url: `/getCategory`,
             data: {
                 keyword: keyword,
+                data: data,
             },
             success: function (hasil) {
-                // $('.data').html(hasil);
-                console.log(hasil);
+                $("#add-list-category").children().remove();
+                hasil.map((item) => {
+                    const {
+                        id,
+                        name
+                    } = item;
+                    
+
+                    var element = `<div class="item-category-v2 p-2 px-3 border rounded" data="${id}">
+                                        <p class="font-14" data="${id}">${name}</p>
+                                    </div>`;
+                    $("#add-list-category").append(element);
+                })
             },
         });
     }
@@ -43,7 +65,6 @@ $(document).ready(function () {
             }
         }
     };
-    let data = [];
 
     $("#add-list-category").on("click", ".item-category-v2", function (el) {
         const text = el.target.innerText;
@@ -53,6 +74,7 @@ $(document).ready(function () {
         $(".current-category").append(element);
         $(this).remove();
 
+        console.log(el.target.getAttribute("data"));
         $("#kategori_list_input").val(data.join(","));
     });
 
@@ -87,6 +109,8 @@ $(document).ready(function () {
 
         data = data.filter((el) => el !== text);
 
+        console.log(data);
+        
         $("#kategori_list_input").val(data.join(","));
     });
     $(".sold-art")[0].checked = false;
