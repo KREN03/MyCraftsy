@@ -41,7 +41,7 @@
                                 <a class="nav-link active" aria-current="page" href="/">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/kompetisi">Kompetisi</a>
+                                <a class="nav-link" href="/competition">Kompetisi</a>
                             </li>
                             <li class="nav-item me-2">
                                 <a class="nav-link" href="/forum">Forum</a>

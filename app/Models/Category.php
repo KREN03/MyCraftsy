@@ -18,4 +18,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Work::class, 'category_works');
     }
+
+    public function competition()
+    {
+        return $this->hasMany(Competition::class);
+    }
 }

@@ -19,5 +19,16 @@ class Competition extends Model
         'buku_panduan',
         'date_start',
         'date_end',
+        'slug'
     ];
+
+    protected $dates = [
+        'date_start',
+        'date_end'
+    ];
+
+    public function category ()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

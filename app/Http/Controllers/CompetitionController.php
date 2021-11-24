@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Competition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,16 +17,24 @@ class CompetitionController extends Controller
     public function index()
     {
         $competitions = Competition::all();
+        $categories = Category::all();
 
         if(Auth()->user()) {
             if (Auth()->user()->is_admin) {
                 return 'Admin Competition';
             } else {
-                return view('competition.list.index', compact('competitions'));
+                return view('competition.list.index', compact('competitions', 'categories'));
             }
         }
 
-        return view('competition.list.index', compact('competitions'));
+        return view('competition.list.index', compact('competitions', 'categories'));
+    }
+
+    public function detail ($slug)
+    {
+        $competition = Competition::where('slug', $slug)->first();
+
+        return view('competition.detail.index', compact('competition'));
     }
 
     /**

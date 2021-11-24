@@ -36,7 +36,8 @@
 }
 
 .icon {
-    font-size: 24px;
+    font-size: 18px;
+    color: #606060;
 }
 
 .icon-div {
@@ -46,4 +47,27 @@
 .card-img-top {
     height: 200px;
     object-fit: cover;
+}
+
+.sub-text {
+    font-size: 14px;
+    color: #606060;
+}
+
+.title-competition {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.image-competition {
+    width: 100%;
+}
+
+.category-competition {
+    font-size: 18px;
+    color: #606060;
+}
+
+.text-content {
+    text-align: justify;
 }

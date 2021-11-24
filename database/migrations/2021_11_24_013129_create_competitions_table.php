@@ -18,6 +18,7 @@ class CreateCompetitionsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->foreignId('category_id')->constrained();
+            $table->string('slug');
             $table->string('lokasi');
             $table->string('thumbnail');
             $table->date('date_start');
