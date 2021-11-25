@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,9 @@ Route::get('/karya/{id}', [KaryaController::class, 'index'])->name('detail_karya
 // Competition
 Route::get('/competition', [CompetitionController::class, 'index'])->name('competition');
 Route::get('/competition/{slug}', [CompetitionController::class, 'detail'])->name('competition.detail');
+
+// Forum
+Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 
 // socialite routes
 Route::get('sign-in-google', [UserController::class, 'google'])->name('login.google');

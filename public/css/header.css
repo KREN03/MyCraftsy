@@ -67,3 +67,15 @@ body {
 .home.container{
     margin-top: 4rem !important;
 }
+
+.subtext {
+    color: #606060;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
