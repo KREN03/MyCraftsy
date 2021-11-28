@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             UserAdminSeeder::class,
-            CompetitionSeeder::class
+            CompetitionSeeder::class,
+            ForumSeeder::class
         ]);
     }
 }

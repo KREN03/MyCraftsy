@@ -25,54 +25,22 @@
         <div class="col-lg-12">
             <h5 class="fw-bold">Temukan Forum</h5>
         </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
-            <div class="card">
-                <img src="{{ asset('image/drawing.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title text-center fw-bold">Kompetisi Melukis</h6>
-                    <p class="card-text text-center subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, incidunt.</p>
-                    <div class="d-flex justify-content-end mt-5">
-                        <a href="" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Bergabung</a>
+        @forelse ($forums as $forum)
+            <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
+                <div class="card">
+                    <img src="{{ $forum->thumbnail }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="card-title text-center fw-bold">{{ $forum->name }}</h6>
+                        <p class="card-text text-center subtext">{{ $forum->description }}</p>
+                        <div class="d-flex justify-content-end mt-5">
+                            <a href="" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Bergabung</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
-            <div class="card">
-                <img src="{{ asset('image/drawing.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title text-center fw-bold">Kompetisi Melukis</h6>
-                    <p class="card-text text-center subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, incidunt.</p>
-                    <div class="d-flex justify-content-end mt-5">
-                        <a href="" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Bergabung</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
-            <div class="card">
-                <img src="{{ asset('image/drawing.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title text-center fw-bold">Kompetisi Melukis</h6>
-                    <p class="card-text text-center subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, incidunt.</p>
-                    <div class="d-flex justify-content-end mt-5">
-                        <a href="" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Bergabung</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
-            <div class="card">
-                <img src="{{ asset('image/drawing.png') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title text-center fw-bold">Kompetisi Melukis</h6>
-                    <p class="card-text text-center subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, incidunt.</p>
-                    <div class="d-flex justify-content-end mt-5">
-                        <a href="" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Bergabung</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @empty
+            <h2>Tidak Ada Forum</h2>
+        @endforelse
     </div>
 </div>
 @endsection
