@@ -62,6 +62,17 @@ class ForumController extends Controller
      * @param  \App\Models\Forum  $forum
      * @return \Illuminate\Http\Response
      */
+    public function detail(Forum $forum)
+    {
+        return view('forum.detail.index', compact('forum'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Forum  $forum
+     * @return \Illuminate\Http\Response
+     */
     public function show(Forum $forum)
     {
         //

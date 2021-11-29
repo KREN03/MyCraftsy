@@ -41,6 +41,7 @@ Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/forum', [ForumController::class, 'store'])->name('forum.store');
+    Route::get('/forum/{forum}', [ForumController::class, 'detail'])->name('forum.detail');
 });
 
 // socialite routes
