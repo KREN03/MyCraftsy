@@ -39,6 +39,10 @@ Route::get('/competition/{slug}', [CompetitionController::class, 'detail'])->nam
 // Forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/forum', [ForumController::class, 'store'])->name('forum.store');
+});
+
 // socialite routes
 Route::get('sign-in-google', [UserController::class, 'google'])->name('login.google');
 Route::get('auth/google/callback', [UserController::class, 'handleProviderCallback'])->name('google.callback');

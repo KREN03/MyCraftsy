@@ -13,7 +13,7 @@
                 <p class="subtext">Bergabung dalam forum untuk berdiskusi dengan orang yang memiliki minat yang sama dengan anda!</p>
             </div>
             <div class="button-forum">
-                <a href="" class="btn btn-outline-primary rounded-pill px-4"><i class="fa fa-plus-circle me-2" aria-hidden="true"></i> Buat Forum</a>
+                <a type="button" class="btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus-circle me-2" aria-hidden="true"></i> Buat Forum</a>
                 <a href="#find_forum" class="btn btn-outline-primary rounded-pill px-4 ms-3"><i class="fa fa-users me-2" aria-hidden="true"></i> Temukan Forum</a>
             </div>
         </div>
@@ -43,4 +43,32 @@
         @endforelse
     </div>
 </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{{ route('forum.store') }}" method="POST">
+            @csrf
+            <div class="modal-body">
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Buat Forum Diskusi</h5>
+                <p>Mari berdiskusi dengan orang-orang yang memiliki minat yang sama!</p>
+                <div class="mb-3 mt-5">
+                    <label for="name" class="form-label">Nama Forum</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Deskripsi Forum</label>
+                    <textarea class="form-control" name="description" id="description" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary rounded-pill px-4">Buat Forum</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection
