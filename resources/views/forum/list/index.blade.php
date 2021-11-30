@@ -12,9 +12,9 @@
                 <h2 class="fw-bold">Selamat Datang di Forum Diskusi</h2>
                 <p class="subtext">Bergabung dalam forum untuk berdiskusi dengan orang yang memiliki minat yang sama dengan anda!</p>
             </div>
-            <div class="button-forum">
+            <div>
                 <a type="button" class="btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus-circle me-2" aria-hidden="true"></i> Buat Forum</a>
-                <a href="#find_forum" class="btn btn-outline-primary rounded-pill px-4 ms-3"><i class="fa fa-users me-2" aria-hidden="true"></i> Temukan Forum</a>
+                <a href="#find_forum" class="btn btn-outline-primary rounded-pill px-4"><i class="fa fa-users me-2" aria-hidden="true"></i> Temukan Forum</a>
             </div>
         </div>
         <div class="col-md-5 mt-5">
