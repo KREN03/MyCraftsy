@@ -7,7 +7,8 @@
 }
 
 .profile .bio-profile .image img{
-    width: 135px;
+    width: 155px;
+    height: 155px;
 }
 
 .profile .bio-profile .user-profile .name{
@@ -115,4 +116,9 @@
 .image-js {
     width: 100% !important;
     /* height: auto !important; */
+}
+
+#button-profile{
+    cursor: pointer;
+    fill: white;
 }

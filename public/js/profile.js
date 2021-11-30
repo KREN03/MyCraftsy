@@ -6,3 +6,10 @@ window.onload = () => {
         gutter: 10
     });
 }
+
+$(document).ready(function(){
+    $('#button-profile').click(function(){
+        console.log('A');
+        
+    })
+})

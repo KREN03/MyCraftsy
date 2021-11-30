@@ -136,6 +136,12 @@
     background: #000;
 }
 
+.reply-comment-button{
+    text-decoration: underline;
+    color: #1088A0;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .menu-option {
         margin-top: 40px;
@@ -172,4 +178,24 @@
         height: 500px;
         position: relative;
     }
+}
+
+.info-work{
+    gap: 20px;
+}
+
+.like>svg{
+    fill: white;
+}
+
+.like>svg.actived{
+    fill: #ff1e00;
+}
+
+.comment-icon>svg{
+    fill: white;
+}
+
+.like, .comment-icon{
+    gap: 10px;
 }

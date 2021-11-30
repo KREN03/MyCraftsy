@@ -1,0 +1,111 @@
+.profile .post-profile .title{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.profile .bio-profile{
+    /* gap: 20px; */
+}
+
+.profile .bio-profile .image img{
+    width: 155px;
+    height: 155px;
+}
+
+.profile .bio-profile .user-profile .name{
+    gap: 10px;
+}
+
+.profile .bio-profile .user-profile .name p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profile .bio-profile .user-profile .info{
+    gap: 10px;
+}
+.sidebar {
+    overflow: hidden;
+    height: 89vh;
+}
+
+.sidebar .option {
+    max-height: 77vh;
+    overflow-y: auto;
+}
+
+.content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.head_kategori {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.item-option {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.child_item {
+    font-size: 14px;
+}
+
+.banner-item-post {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.banner-item-post p {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    margin-bottom: -80px;
+}
+
+.box-image:hover img {
+    transform: scale(1.25);
+    transition: all 1.5s;
+}
+.box-image:hover .banner-item-post p {
+    margin: 0;
+    transition: all 1s;
+}
+
+.stats_total{
+    gap: 10px;
+}
+
+.stats_total>div{
+    border: 1px solid #ACACAC;
+    box-shadow: 0px 1px 0px 1px rgba(78, 78, 78, 0.123);
+}
+
+.stats_total>div>.total{
+    font-size: 24px;
+    margin-top: 10px !important;
+}
+
+.stats_total>div>.stats_title{
+    display: inline-flex;
+    margin-left: 6px !important;
+}
+
+.stats_total>div>svg{
+    fill: #17468b;
+}
+
+table td{
+    font-size: 14px;
+    padding: 20px !important;
+}

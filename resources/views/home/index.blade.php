@@ -10,12 +10,12 @@
             <div class="sidebar col-md-2 p-4 pe-1 border rounded shadow-sm">
                 <p class="head_kategori">KATEGORI</p>
                 <div class="option">
-                    <a href="{{ route('home') }}" class="d-block text-decoration-none mt-2 link-kategori">
+                    <a href="{{ route('home') }}" class="d-block text-decoration-none mt-2 link-kategori font-15">
                         Semua
                     </a>
                     @foreach ($categories as $category)
-                    <a href="{{ route('home', 'id=' . $category->id) }}" class="d-block text-decoration-none mt-2 link-kategori">
-                        {{ $category->name }}
+                    <a href="{{ route('home', 'id=' . $category->id) }}" class="d-block text-decoration-none mt-2 link-kategori font-15">
+                        {{ $category->name }} <span class="font-14">({{ $category->work->count() }})</span>
                     </a>
                     @endforeach
                     {{-- @for ($i = 0; $i < 7; $i++)

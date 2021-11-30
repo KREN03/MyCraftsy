@@ -27,17 +27,17 @@ p{
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .input-search {
@@ -58,10 +58,9 @@ p{
 }
 
 .image-profile {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
-    transform: scale(1.2);
 }
 
 .home.container-fluid {
@@ -70,4 +69,21 @@ p{
 
 .home.container{
     margin-top: 4rem !important;
+}
+
+.primary-button{
+  background: #fff;
+  color: #1088A0;
+  border: #1088A0 1px solid;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.5s all;
+}
+
+.primary-button:hover{
+  background: #1088A0;
+  color: #fff;
+  border: #fff 1px solid;
 }
