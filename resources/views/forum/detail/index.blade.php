@@ -79,8 +79,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 ps-lg-4 mt-lg-0 mt-md-4">
-            <div class="row">
+        <div class="col-lg-4 ps-lg-4 mt-lg-0 mt-md-4 mt-sm-4 mt-4">
+            <div class="row sticky-lg-top mt-lg-50">
                 <div class="col-md-12 buat-kiriman p-3">
                     <h5 class="fw-bold">Forum Lainnya</h5>
                     <hr class="line-other-forum mb-5">
