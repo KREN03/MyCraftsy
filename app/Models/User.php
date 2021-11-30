@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -73,7 +74,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function avatar () {
         if ($this->avatar) {
-            return Storage::url('profile/' . $this->avatar);
+            if(Str::start('https', $this->avatar)) {
+                return $this->avatar;
+            } else {
+                return Storage::url('profile/' . $this->avatar);
+            }
         } else {
             return asset('image/user_default.png');
         }
