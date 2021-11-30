@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     @yield('css')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +41,7 @@
                                 <a class="nav-link active" aria-current="page" href="/">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/kompetisi">Kompetisi</a>
+                                <a class="nav-link" href="/competition">Kompetisi</a>
                             </li>
                             <li class="nav-item me-2">
                                 <a class="nav-link" href="/forum">Forum</a>

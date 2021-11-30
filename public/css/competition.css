@@ -1,0 +1,73 @@
+.jumbotron {
+    position: relative;
+    background-image: url('../image/banner_competition.png');
+    background-size: cover;
+    background-position: center;
+    height: 367px;
+    text-align: center;
+    margin-top: 56px;
+}
+
+.jumbotron .container {
+    z-index: 1;
+    position: relative;
+}
+
+.display-competition {
+    color: white;
+    padding-top: 200px;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    font-size: 48px;
+}
+
+.jumbotron::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, #000000 100%);
+    position: absolute;
+    bottom: 0;
+}
+
+.date-text {
+    margin-left: 15px;
+}
+
+.icon {
+    font-size: 18px;
+    color: #606060;
+}
+
+.icon-div {
+    width: 24px;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.sub-text {
+    font-size: 14px;
+    color: #606060;
+}
+
+.title-competition {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.image-competition {
+    width: 100%;
+}
+
+.category-competition {
+    font-size: 18px;
+    color: #606060;
+}
+
+.text-content {
+    text-align: justify;
+}
