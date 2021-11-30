@@ -97,7 +97,7 @@
             </div>
         </form>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -110,11 +110,11 @@
                         </div>
                         <div class="all-category">
                             <p class="font-14 my-2">Semua Kategori</p>
-                            <input type="text" class="form-control font-14 mb-2" id="input_judul"
+                            <input type="text" class="form-control font-14 mb-2" id="input_category"
                                 placeholder="Cari Kategori">
                             <p class="font-13 my-2 fst-italic text-danger">Klik untuk menambahkan kategori</p>
                             <div class="list-category" id="add-list-category">
-                                <div class="item-category-v2 p-2 px-3 border rounded" data="1">
+                                {{-- <div class="item-category-v2 p-2 px-3 border rounded" data="1">
                                     <p class="font-14" data="1">Teknologi</p>
                                 </div>
                                 <div class="item-category-v2 p-2 px-3 border rounded" data="2">
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="item-category-v2 p-2 px-3 border rounded" data="3">
                                     <p class="font-14" data="3">Seni Rupa</p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryaController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,10 +31,20 @@ Route::get('/dashboard', function () {
 
 // Karya
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::post('/getCategory', [HomeController::class, 'getCategories'])->name('api_getcategory');
 Route::get('/karya/add', [KaryaController::class, 'add'])->name('view_add_karya');
 Route::post('/karya/add', [KaryaController::class, 'store'])->name('add_karya');
 Route::get('/karya/{id}', [KaryaController::class, 'index'])->name('detail_karya');
+Route::post('/comment/add/{work_id}', [CommentController::class, 'store'])->name('comment_add');
+Route::post('/like/{work_id}', [LikeController::class, 'like'])->name('like_add');
 
+//profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/update', [ProfileController::class, 'update'])->name('update_profile');
+Route::post('/profile/update', [ProfileController::class, 'change'])->name('update_profile_db');
+Route::get('/profile/stats', [ProfileController::class, 'stats'])->name('stats_profile');
+Route::get('/getdatachart', [ProfileController::class, 'getMonthlyKeuanganData']);
 // Competition
 Route::get('/competition', [CompetitionController::class, 'index'])->name('competition');
 Route::get('/competition/{slug}', [CompetitionController::class, 'detail'])->name('competition.detail');
