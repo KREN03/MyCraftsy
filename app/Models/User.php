@@ -46,4 +46,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function message()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function admin_forum()
+    {
+        return $this->hasMany(Forum::class);
+    }
+
+    public function anggota_forum()
+    {
+        return $this->belongsToMany(Forum::class, 'anggota_forums')->withTimestamps()->using(AnggotaForum::class);
+    }
 }

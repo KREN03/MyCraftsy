@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnggotaForum;
 use App\Models\Forum;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,7 +66,22 @@ class ForumController extends Controller
      */
     public function detail(Forum $forum)
     {
-        return view('forum.detail.index', compact('forum'));
+        $messages = Message::where('forum_id', $forum->id)->get();
+        $forums = Forum::all()->except($forum->id);
+
+        return view('forum.detail.index', compact('forum', 'messages', 'forums'));
+    }
+
+    public function join(Forum $forum)
+    {
+        $user_id = Auth::user()->id;
+
+        AnggotaForum::create([
+            'user_id' => $user_id,
+            'forum_id' => $forum->id
+        ]);
+
+        return redirect()->route('forum.detail', $forum->id);
     }
 
     /**

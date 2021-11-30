@@ -33,7 +33,18 @@
                         <h6 class="card-title text-center fw-bold">{{ $forum->name }}</h6>
                         <p class="card-text text-center subtext">{{ $forum->description }}</p>
                         <div class="d-flex justify-content-end mt-5">
-                            <a href="{{ route('forum.detail', $forum->id) }}" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Bergabung</a>
+                            @auth
+                                @if (Auth()->user()->id == $forum->user_id || $forum->anggota->contains(Auth()->user()->id))
+                                <a href="{{ route('forum.detail', $forum->id) }}" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Masuk</a>
+                                @else
+                                <form action="{{ route('forum.join', $forum->id) }}" id="forum-{{ $forum->id }}" method="POST">
+                                    @csrf
+                                    <button type="button" class="btn btn-primary ml-auto rounded-pill px-3 py-2 gabung" data-name="{{ $forum->name }}" data-id="{{ $forum->id }}">Bergabung</button>
+                                </form>
+                                @endif
+                                @else
+                                <a href="{{ route('forum.detail', $forum->id) }}" class="btn btn-primary ml-auto rounded-pill px-3 py-2">Bergabung</a>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -71,4 +82,31 @@
       </div>
     </div>
   </div>
+@endsection
+@section('script')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $('.gabung').click(function(e) {
+        var name = $(this).data('name');
+        var id = $(this).data('id');
+        var id_forum = e.target.dataset.id;
+
+        Swal.fire({
+            title: ``,
+            text: `Ingin bergabung dengan forum ${name} ?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $(`#forum-${id_forum}`).submit();
+            }
+        })
+    })
+
+</script>
 @endsection

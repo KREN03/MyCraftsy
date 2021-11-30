@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             UserAdminSeeder::class,
             CompetitionSeeder::class,
-            ForumSeeder::class
+            ForumSeeder::class,
+            MessageSeeder::class
         ]);
     }
 }
