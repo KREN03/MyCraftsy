@@ -87,3 +87,14 @@ p{
   color: #fff;
   border: #fff 1px solid;
 }
+.subtext {
+    color: #606060;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
