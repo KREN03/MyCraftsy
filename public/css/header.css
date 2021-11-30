@@ -5,6 +5,9 @@
 body {
 
 }
+p{
+  margin: 0 !important;
+}
 
 .font-13{
   font-size: 13px;
@@ -68,6 +71,22 @@ body {
     margin-top: 4rem !important;
 }
 
+.primary-button{
+  background: #fff;
+  color: #1088A0;
+  border: #1088A0 1px solid;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.5s all;
+}
+
+.primary-button:hover{
+  background: #1088A0;
+  color: #fff;
+  border: #fff 1px solid;
+}
 .subtext {
     color: #606060;
 }

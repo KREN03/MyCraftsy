@@ -10,12 +10,12 @@
             <div class="sidebar col-md-2 p-4 pe-1 border rounded shadow-sm">
                 <p class="head_kategori">KATEGORI</p>
                 <div class="option">
-                    <a href="{{ route('home') }}" class="d-block text-decoration-none mt-2 link-kategori">
+                    <a href="{{ route('home') }}" class="d-block text-decoration-none mt-2 link-kategori font-15">
                         Semua
                     </a>
                     @foreach ($categories as $category)
-                    <a href="{{ route('home', 'id=' . $category->id) }}" class="d-block text-decoration-none mt-2 link-kategori">
-                        {{ $category->name }}
+                    <a href="{{ route('home', 'id=' . $category->id) }}" class="d-block text-decoration-none mt-2 link-kategori font-15">
+                        {{ $category->name }} <span class="font-14">({{ $category->work->count() }})</span>
                     </a>
                     @endforeach
                     {{-- @for ($i = 0; $i < 7; $i++)
@@ -34,12 +34,12 @@
             <div class="content col-md-10 p-3 pt-0">
                 <div class="grid p-0">
                     @foreach ($data as $item)
-                        <a class="col-md-3 p-1 overflow-hidden grid-item" href="/karya/1">
-                            <div class="position-relative box-image p-0 overflow-hidden type-{{$item->type}}">
+                        <a class="col-md-3 p-1 overflow-hidden grid-item" href="/karya/{{ $item->id }}">
+                            <div class="position-relative box-image p-0 overflow-hidden type-{{$item->type}} @if($item->type == 'video') 'grid-item--width2' @endif">
                                 @if ($item->type == 'video')
                                     <video src="{{ Storage::url('karya/' . $item->file) }}" class="video-js" id="my-video" muted loop></video>
                                 @else
-                                    <img src="{{ Storage::url('karya/' . $item->file) }}" class="card-img-top">
+                                    <img src="{{ Storage::url('karya/' . $item->file) }}" class="card-img-top image-js">
                                 @endif
                                 <div class="position-absolute banner-item-post p-3 d-flex m-0">
                                     <p>{{ $item->title }}</p>

@@ -1,0 +1,47 @@
+.image {
+    cursor: pointer;
+    width: 257px;
+    height: 257px;
+}
+
+#image-profile{
+    width: 257px;
+    height: 257px;
+    object-fit: cover;
+}
+
+.image-input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 257px;
+    height: 257px;
+    opacity: 0;
+}
+
+.image:hover .edit_image {
+    display: flex;
+}
+
+.edit_image {
+    width: 257px;
+    height: 257px;
+    background: rgba(0, 0, 0, 0.514);
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    gap: 10px;
+}
+
+.edit_image>p {
+    font-weight: 500;
+    color: white;
+}
+
+.edit_image .bi-camera-fill {
+    fill: aliceblue;
+}

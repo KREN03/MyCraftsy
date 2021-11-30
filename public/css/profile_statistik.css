@@ -1,3 +1,29 @@
+.profile .post-profile .title{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.profile .bio-profile{
+    /* gap: 20px; */
+}
+
+.profile .bio-profile .image img{
+    width: 155px;
+    height: 155px;
+}
+
+.profile .bio-profile .user-profile .name{
+    gap: 10px;
+}
+
+.profile .bio-profile .user-profile .name p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profile .bio-profile .user-profile .info{
+    gap: 10px;
+}
 .sidebar {
     overflow: hidden;
     height: 89vh;
@@ -56,38 +82,30 @@
     transition: all 1s;
 }
 
-.grid-item {
-    width: 260px;
-}
-.grid-item--width2{
-    width: 500px;
-    overflow: hidden;
+.stats_total{
+    gap: 10px;
 }
 
-.grid-item img {
-    width: 100%;
+.stats_total>div{
+    border: 1px solid #ACACAC;
+    box-shadow: 0px 1px 0px 1px rgba(78, 78, 78, 0.123);
 }
 
-.link-kategori {
-    color: #000;
-    font-weight: 500;
+.stats_total>div>.total{
+    font-size: 24px;
+    margin-top: 10px !important;
 }
 
-.link-kategori:hover {
-    color: #1088a0;
-    transition: all 0.5s;
+.stats_total>div>.stats_title{
+    display: inline-flex;
+    margin-left: 6px !important;
 }
 
-.banner-item-post:hover {
-    background: rgba(0, 0, 0, 0.336);
+.stats_total>div>svg{
+    fill: #17468b;
 }
 
-.video-js {
-    width: 100% !important;
-    /* height: auto !important; */
-}
-
-.image-js {
-    width: 100% !important;
-    /* height: auto !important; */
+table td{
+    font-size: 14px;
+    padding: 20px !important;
 }

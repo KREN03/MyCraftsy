@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Work;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class KaryaController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('karya.detail.index');
+        $data = Work::find($id);
+        return view('karya.detail.index', compact('data'));
     }
 
     public function add()
@@ -43,6 +45,7 @@ class KaryaController extends Controller
                 'price' => $request->price,
                 'file' => $file_name,
                 'type' => explode('/', $request->file->getMimeType())[0],
+                'user_id' => Auth::user()->id,
             ]);
 
             foreach ($category as $key) {
@@ -57,6 +60,7 @@ class KaryaController extends Controller
                 'price' => 0,
                 'file' => $file_name,
                 'type' => explode('/', $request->file->getMimeType())[0],
+                'user_id' => Auth::user()->id,
             ]);
 
             foreach ($category as $key) {
