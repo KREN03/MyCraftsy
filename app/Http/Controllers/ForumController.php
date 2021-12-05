@@ -66,7 +66,7 @@ class ForumController extends Controller
      */
     public function detail(Forum $forum)
     {
-        $messages = Message::where('forum_id', $forum->id)->get();
+        $messages = Message::where('forum_id', $forum->id)->orderBy('created_at', 'desc')->get();
         $forums = Forum::all()->except($forum->id);
 
         return view('forum.detail.index', compact('forum', 'messages', 'forums'));

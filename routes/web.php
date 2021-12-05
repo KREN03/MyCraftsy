@@ -6,6 +6,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/forum', [ForumController::class, 'store'])->name('forum.store');
     Route::get('/forum/{forum}', [ForumController::class, 'detail'])->name('forum.detail');
     Route::post('/forum/{forum}', [ForumController::class, 'join'])->name('forum.join');
+    Route::post('/forum/{forum}/post', [MessageController::class, 'store'])->name('forum.message');
 });
 
 // socialite routes

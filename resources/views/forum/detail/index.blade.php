@@ -7,9 +7,9 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ $forum->thumbnail }}')">
     <div class="container d-flex h-100">
-        <div class="mt-auto">
-            <h1 class="display-competition">Kompetisi</h1>
-            <p class="text-white text-opacity-75 sub-text">Forum ini bertujuan berbagi pengetahuan dan bertanya seputar karya lukis</p>
+        <div class="mt-auto mb-4">
+            <h1 class="display-competition">{{ $forum->name }}</h1>
+            <p class="text-white text-opacity-75 sub-text">{{ $forum->description }}</p>
             <p class="text-white text-opacity-75 fw-light sub-sub-text">{{ $forum->anggota->count() }} anggota grup</p>
         </div>
     </div>
@@ -48,38 +48,6 @@
                 </div>
             </div>
             @endforeach
-            <div class="row mt-50 buat-kiriman p-2">
-                <div class="col-md-12">
-                    <div class="d-flex align-items-center">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-profile" alt="">
-                        <div class="profile-post ms-3">
-                            <span class="profile-name-forum d-block">Jerry Andrianto Pangaribuan</span>
-                            <span class="post-date">22 Oktober 2021</span>
-                        </div>
-                    </div>
-                    <p class="mt-3 post-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iusto pariatur delectus provident quae quo, ab obcaecati voluptate magnam atque iure! Explicabo quisquam accusamus consectetur ut natus aliquam impedit omnis odit voluptatibus commodi. Odio doloribus sit, deleniti provident illo tempora, incidunt nihil eligendi fugit asperiores nulla! Quas aut minima laboriosam.</p>
-                    <div class="d-flex mt-4">
-                        <i class="far fa-comment-dots icon ms-auto"></i>
-                        <i class="far fa-thumbs-up icon ms-3"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-50 buat-kiriman p-2">
-                <div class="col-md-12">
-                    <div class="d-flex align-items-center">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-profile" alt="">
-                        <div class="profile-post ms-3">
-                            <span class="profile-name-forum d-block">Jerry Andrianto Pangaribuan</span>
-                            <span class="post-date">22 Oktober 2021</span>
-                        </div>
-                    </div>
-                    <p class="mt-3 post-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iusto pariatur delectus provident quae quo, ab obcaecati voluptate magnam atque iure! Explicabo quisquam accusamus consectetur ut natus aliquam impedit omnis odit voluptatibus commodi. Odio doloribus sit, deleniti provident illo tempora, incidunt nihil eligendi fugit asperiores nulla! Quas aut minima laboriosam.</p>
-                    <div class="d-flex mt-4">
-                        <i class="far fa-comment-dots icon ms-auto"></i>
-                        <i class="far fa-thumbs-up icon ms-3"></i>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="col-lg-4 ps-lg-4 mt-lg-0 mt-md-4 mt-sm-4 mt-4">
             <div class="row sticky-lg-top mt-lg-50">
@@ -106,20 +74,26 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            ...
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        </div>
+        <form action="{{ route('forum.message', $forum->id) }}" method="POST">
+            @csrf
+            <div class="modal-body">
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Buat Kiriman</h5>
+                <p>Bagikan kiriman ke forum {{ $forum->name }}</p>
+                <div class="mb-3 mt-5">
+                    <label for="message" class="form-label fw-bold">Kiriman Anda</label>
+                    <textarea class="form-control" name="message" id="message" rows="8" placeholder="Masukkan Kiriman anda"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary rounded-pill px-4">Buat Kiriman</button>
+            </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 @endsection

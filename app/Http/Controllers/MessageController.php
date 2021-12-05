@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Forum;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -33,9 +35,19 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Forum $forum)
     {
-        //
+        $request->validate([
+            'message' => 'required|string'
+        ]);
+
+        Message::create([
+            'user_id' => Auth::user()->id,
+            'forum_id' => $forum->id,
+            'message' => $request->message
+        ]);
+
+        return back()->with('sukses', 'Berhasil Membuat Kiriman');
     }
 
     /**

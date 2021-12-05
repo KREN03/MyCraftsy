@@ -54,34 +54,7 @@
         @endforelse
     </div>
 </div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="{{ route('forum.store') }}" method="POST">
-            @csrf
-            <div class="modal-body">
-                <h5 class="modal-title fw-bold" id="exampleModalLabel">Buat Forum Diskusi</h5>
-                <p>Mari berdiskusi dengan orang-orang yang memiliki minat yang sama!</p>
-                <div class="mb-3 mt-5">
-                    <label for="name" class="form-label">Nama Forum</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Deskripsi Forum</label>
-                    <textarea class="form-control" name="description" id="description" rows="4"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary rounded-pill px-4">Buat Forum</button>
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  p
 @endsection
 @section('script')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
