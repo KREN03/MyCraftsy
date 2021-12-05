@@ -64,6 +64,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Forum::class, 'anggota_forums')->withTimestamps()->using(AnggotaForum::class);
     }
 
+    public function like_message()
+    {
+        return $this->belongsToMany(Message::class, 'like_messages')->withTimestamps()->using(LikeMessage::class);
+    }
+
     public function works(){
         return $this->hasMany(Work::class);
     }

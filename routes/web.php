@@ -6,6 +6,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\LikeMessageController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -58,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/forum/{forum}', [ForumController::class, 'detail'])->name('forum.detail');
     Route::post('/forum/{forum}', [ForumController::class, 'join'])->name('forum.join');
     Route::post('/forum/{forum}/post', [MessageController::class, 'store'])->name('forum.message');
+    Route::post('/like_message/{message_id}', [LikeMessageController::class, 'like'])->name('like_message.add');
 });
 
 // socialite routes

@@ -17,7 +17,7 @@ class LikeController extends Controller
             ['work_id', '=', $request->work_id],
             ['user_id', '=', Auth::user()->id],
         ])->get();
-        
+
         if (!empty($data[0]->work_id)) {
             Like::destroy($data[0]->id);
             return response()->json(false);

@@ -42,8 +42,11 @@
                     </div>
                     <p class="mt-3 post-detail">{{ $message->message }}</p>
                     <div class="d-flex mt-4">
+                        <input type="hidden" id="message_id" value="{{ $message->id }}">
                         <i class="far fa-comment-dots icon ms-auto"></i>
-                        <i class="far fa-thumbs-up icon ms-3"></i>
+                        <i class="{{ $message->likeChoosed ? 'fas' : 'far' }} fa-thumbs-up icon ms-3" @if ($message->likeChoosed)
+                            active="true"
+                        @endif id="message-{{ $message->id }}" data-id="{{ $message->id }}"></i> <span class="like_count" id="likes_count-{{ $message->id }}">{{ $message->like_message->count() }}</span>
                     </div>
                 </div>
             </div>
@@ -96,4 +99,8 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('script')
+<script src="{{ asset('js/message-like.js') }}"></script>
 @endsection
