@@ -60,6 +60,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/forum/{forum}', [ForumController::class, 'join'])->name('forum.join');
     Route::post('/forum/{forum}/post', [MessageController::class, 'store'])->name('forum.message');
     Route::post('/like_message/{message_id}', [LikeMessageController::class, 'like'])->name('like_message.add');
+
+});
+
+// Admin
+Route::middleware(['auth', 'ensureUserRole: admin'])->group(function() {
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 });
 
 // socialite routes
