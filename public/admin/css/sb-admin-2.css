@@ -11308,6 +11308,10 @@ body.sidebar-toggled footer.sticky-footer {
     border-radius: 5px;
 }
 
+.icon-eye:hover {
+    background-color: #00778E;
+}
+
 .icon-edit {
     text-decoration: none;
     display: inline-block;
@@ -11319,6 +11323,10 @@ body.sidebar-toggled footer.sticky-footer {
     font-size: 14px;
     background-color: #FFC107;
     border-radius: 5px;
+}
+
+.icon-edit:hover{
+    background-color: #EFB70D;
 }
 
 .icon-trash {
@@ -11334,7 +11342,10 @@ body.sidebar-toggled footer.sticky-footer {
     border-radius: 5px;
 }
 
-.icon:hover{
-    color: #fff;
-    background-color: #093b29;
+.icon-trash:hover {
+    background-color: #E42121;
+}
+
+.icon:hover {
+    color: #E2E2E2;
 }
