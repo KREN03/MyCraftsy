@@ -11294,3 +11294,47 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.icon-eye {
+    text-decoration: none;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #1088A0;
+    border-radius: 5px;
+}
+
+.icon-edit {
+    text-decoration: none;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #FFC107;
+    border-radius: 5px;
+}
+
+.icon-trash {
+    text-decoration: none;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #FF2424;
+    border-radius: 5px;
+}
+
+.icon:hover{
+    color: #fff;
+    background-color: #093b29;
+}

@@ -11,6 +11,6 @@ class AdminController extends Controller
     {
         $competitions = Competition::all();
 
-        return view('admin.competition.index');
+        return view('admin.competition.index', compact('competitions'));
     }
 }
