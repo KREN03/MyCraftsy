@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\ForumController;
@@ -66,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
 // Admin
 Route::middleware(['auth', 'ensureUserRole: admin'])->group(function() {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/competition', [AdminController::class, 'competition'])->name('competition.admin');
 });
 
 // socialite routes
