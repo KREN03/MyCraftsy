@@ -9,7 +9,9 @@ window.onload = () => {
 
 $(document).ready(function(){
     $('#button-profile').click(function(){
-        console.log('A');
         
+    })
+    $('.button-banner-menu').click(function(){
+        $(this).children('.modal-menu').toggle();
     })
 })
