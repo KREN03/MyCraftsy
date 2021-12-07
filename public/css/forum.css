@@ -119,3 +119,15 @@
     color: #1088A0;
     margin-left: 5px;
 }
+
+.box-image {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.fa-paper-plane {
+    font-size: 24px;
+    color: #1088A0;
+}
