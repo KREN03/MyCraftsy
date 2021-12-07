@@ -12,32 +12,69 @@
             @csrf
             <div class="form-group">
               <label for="title">Nama Kompetisi</label>
-              <input type="text" name="title" id="title" class="form-control" value="{{ old('title') ? old('title') : $competition->title }}">
+              <input type="text" name="title" id="title" class="form-control @error('title')
+              is-invalid
+            @enderror" value="{{ old('title') ? old('title') : $competition->title }}">
+            @error('title')
+              <div class="invalid-feedback">
+                Nama Kompetisi Harus diisi
+              </div>
+              @enderror
             </div>
             <div class="form-group">
                 <label for="description">Deskripsi Kompetisi</label>
-                <textarea class="form-control" name="description" id="description" rows="5">{{ old('description') ? old('description') : $competition->description }}</textarea>
+                <textarea class="form-control @error('description') is-invalid
+                @enderror" name="description" id="description" rows="5">{{ old('description') ? old('description') : $competition->description }}</textarea>
+                @error('description')
+                <div class="invalid-feedback">
+                    Deskripsi Kompetisi Harus diisi
+                </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="lokasi">Lokasi Kompetisi</label>
-                <input type="text" name="lokasi" id="lokasi" class="form-control" value="{{ old('lokasi') ? old('lokasi') : $competition->lokasi }}">
+                <input type="text" name="lokasi" id="lokasi" class="form-control @error('lokasi') is-invalid
+                @enderror" value="{{ old('lokasi') ? old('lokasi') : $competition->lokasi }}">
+                @error('lokasi')
+                <div class="invalid-feedback">
+                    Lokasi Harus diisi
+                </div>
+                @enderror
             </div>
             <div class="form-group">
               <label for="category_id">Kategori</label>
-              <select class="form-control" name="category_id" id="category_id">
+              <select class="form-control @error('category_id') is-invalid
+              @enderror" name="category_id" id="category_id">
                   <option value="">Pilih Kategori</option>
                   @foreach ($categories as $category)
                   <option value="{{ $category->id }}" {{ $category->id == $competition->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
                   @endforeach
               </select>
+              @error('category_id')
+                <div class="invalid-feedback">
+                    Pilih salah satu kategori
+                </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="date_start">Tanggal Mulai</label>
-                <input type="date" name="date_start" id="date_start" class="form-control" value="{{ old('date_start') ?  old('date_start') : $competition->date_start->format('Y-m-d') }}">
+                <input type="date" name="date_start" id="date_start" class="form-control @error('date_start') is-invalid
+                @enderror" value="{{ old('date_start') ?  old('date_start') : $competition->date_start->format('Y-m-d') }}">
+                @error('date_start')
+                <div class="invalid-feedback">
+                    Tanggal Mulai Kompetisi Harus diisi
+                </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="date_end">Tanggal Berakhir</label>
-                <input type="date" name="date_end" id="date_end" class="form-control" value="{{ old('date_end') ?  old('date_end') : $competition->date_end->format('Y-m-d') }}">
+                <input type="date" name="date_end" id="date_end" class="form-control @error('date_end') is-invalid
+                @enderror" value="{{ old('date_end') ?  old('date_end') : $competition->date_end->format('Y-m-d') }}">
+                @error('date_end')
+                <div class="invalid-feedback">
+                    Tanggal Mulai Kompetisi Harus diisi
+                </div>
+                @enderror
             </div>
             <div class="form-group">
               <label for="link_website">Link Website Kompetisi</label>
