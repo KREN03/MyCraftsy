@@ -37,4 +37,9 @@ class Message extends Model
     {
         return Auth::check() ? $this->hasOne(LikeMessage::class, 'message_id', 'id')->where('user_id', Auth::user()->id) : $this->hasOne(LikeMessage::class, 'message_id', 'id')->where('user_id', -1000);
     }
+
+    public function post_comment ()
+    {
+        return $this->hasMany(PostComment::class);
+    }
 }

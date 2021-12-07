@@ -93,7 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function following() {
         return $this->belongsToMany(User::class, 'followers', 'parent_id', 'child_id');
     }
-    
+
     // users that follow this user
     public function followers() {
         return $this->belongsToMany(User::class, 'followers', 'child_id', 'parent_id');
@@ -105,5 +105,10 @@ class User extends Authenticatable implements MustVerifyEmail
             'child_id' => $user->id,
         ])->count() <= 0);
         return $validate;
+    }
+
+    public function post_comment()
+    {
+        return $this->hasMany(PostComment::class);
     }
 }

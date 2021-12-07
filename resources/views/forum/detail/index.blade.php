@@ -49,6 +49,20 @@
                         @endif id="message-{{ $message->id }}" data-id="{{ $message->id }}"></i> <span class="like_count" id="likes_count-{{ $message->id }}">{{ $message->like_message->count() }}</span>
                     </div>
                     <div class="collapse" id="collapseExample-{{ $message->id }}">
+                        @foreach ($message->post_comment as $comment)
+                        <div class="card card-body mb-4">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ $comment->user->avatar }}" class="box-image-comment rounded-circle" alt="">
+                                <div class="profile-comment ms-3">
+                                    <span class="profile-name-comment d-block">{{ $comment->user->name }}</span>
+                                    <span class="post-date-comment">{{ $comment->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
+                            <p class="text-comment mt-3">
+                                {{ $comment->comment }}
+                            </p>
+                        </div>
+                        @endforeach
                         <form action="">
                             <div class="d-flex align-items-center">
                                 <div>

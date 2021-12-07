@@ -127,7 +127,29 @@
     object-fit: contain;
 }
 
+.box-image-comment {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    object-fit: contain;
+}
+
 .fa-paper-plane {
     font-size: 24px;
     color: #1088A0;
+}
+
+.profile-name-comment {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.post-date-comment {
+    font-size: 12px;
+    color: #606060;
+}
+
+.text-comment {
+    font-size: 14px;
 }
