@@ -65,17 +65,19 @@
                         </div>
                         <p class="ms-3 text-capitalize">{{ $data->users->name }}</p>
                     </div>
-                    @if (!(Auth::user()->id == $data->users->id))
+                    @auth
+                        @if (!(Auth::user()->id == $data->users->id))
                         @if (Auth::user()->isFollowers($data->users))
-                            <div class="follow">
-                                <form action="{{ route('follow_profile') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="following_id" value="{{ $data->users->id }}">
-                                    <button class="px-3 py-1 rounded-pill" type="submit">Ikuti</button>
-                                </form>
-                            </div>
+                        <div class="follow">
+                            <form action="{{ route('follow_profile') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="following_id" value="{{ $data->users->id }}">
+                                <button class="px-3 py-1 rounded-pill" type="submit">Ikuti</button>
+                            </form>
+                        </div>
                         @endif
-                    @endif
+                        @endif
+                    @endauth
                 </div>
                 <div class="description mb-3">
                     {{ $data->description }}
