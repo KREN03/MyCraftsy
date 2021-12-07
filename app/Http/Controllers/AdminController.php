@@ -108,4 +108,11 @@ class AdminController extends Controller
 
         return redirect()->route('competition.admin')->with('sukses', 'Berhasil Menambahkan Kompetisi');
     }
+
+    public function competition_destroy (Competition $competition)
+    {
+        $competition->delete();
+
+        return back()->with('sukses', 'Berhasil Menghapus Kompetisi');
+    }
 }
