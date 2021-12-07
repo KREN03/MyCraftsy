@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -49,6 +50,26 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function message()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function admin_forum()
+    {
+        return $this->hasMany(Forum::class);
+    }
+
+    public function anggota_forum()
+    {
+        return $this->belongsToMany(Forum::class, 'anggota_forums')->withTimestamps()->using(AnggotaForum::class);
+    }
+
+    public function like_message()
+    {
+        return $this->belongsToMany(Message::class, 'like_messages')->withTimestamps()->using(LikeMessage::class);
+    }
+
     public function works(){
         return $this->hasMany(Work::class);
     }
@@ -59,7 +80,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function avatar () {
         if ($this->avatar) {
-            return Storage::url('profile/' . $this->avatar);
+            if(Str::start('https', $this->avatar)) {
+                return $this->avatar;
+            } else {
+                return Storage::url('profile/' . $this->avatar);
+            }
         } else {
             return asset('image/user_default.png');
         }

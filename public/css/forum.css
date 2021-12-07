@@ -71,6 +71,7 @@
 
 .profile-name-forum {
     font-weight: 600;
+    color: #000000;
 }
 
 .post-date {
@@ -85,6 +86,7 @@
 .icon {
     font-size: 24px;
     color: #1088A0;
+    cursor: pointer;
 }
 
 .line-other-forum {
@@ -111,4 +113,9 @@
     .mt-lg-50 {
         top: 85px;
     }
+}
+
+.like_count {
+    color: #1088A0;
+    margin-left: 5px;
 }

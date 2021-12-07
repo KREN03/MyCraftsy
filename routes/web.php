@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\LikeMessageController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +61,16 @@ Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::middleware(['auth'])->group(function () {
     Route::post('/forum', [ForumController::class, 'store'])->name('forum.store');
     Route::get('/forum/{forum}', [ForumController::class, 'detail'])->name('forum.detail');
+    Route::post('/forum/{forum}', [ForumController::class, 'join'])->name('forum.join');
+    Route::post('/forum/{forum}/post', [MessageController::class, 'store'])->name('forum.message');
+    Route::post('/like_message/{message_id}', [LikeMessageController::class, 'like'])->name('like_message.add');
+
+});
+
+// Admin
+Route::middleware(['auth', 'ensureUserRole: admin'])->group(function() {
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/competition', [AdminController::class, 'competition'])->name('competition.admin');
 });
 
 // socialite routes

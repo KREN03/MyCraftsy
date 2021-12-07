@@ -24,6 +24,10 @@ class UserController extends Controller
 
         $request->session()->regenerate();
 
+        if (Auth::user()->is_admin) {
+            return redirect()->route('dashboard');
+        }
+
         return redirect()->route('home');
     }
 
