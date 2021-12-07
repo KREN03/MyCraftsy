@@ -31,7 +31,7 @@
                     @endfor --}}
                 </div>
             </div>
-            <div class="content col-md-10 p-3 pt-0">
+            <div class="content col-md-10 p-3 pt-0">   
                 <div class="grid p-0">
                     @foreach ($data as $item)
                         <a class="col-md-3 p-1 overflow-hidden grid-item" href="/karya/{{ $item->id }}">

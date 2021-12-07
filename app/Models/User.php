@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -62,5 +63,22 @@ class User extends Authenticatable implements MustVerifyEmail
         } else {
             return asset('image/user_default.png');
         }
+    }
+
+    public function following() {
+        return $this->belongsToMany(User::class, 'followers', 'parent_id', 'child_id');
+    }
+    
+    // users that follow this user
+    public function followers() {
+        return $this->belongsToMany(User::class, 'followers', 'child_id', 'parent_id');
+    }
+
+    public function isFollowers(User $user){
+        $validate = (Follower::where([
+            'parent_id' => Auth::user()->id,
+            'child_id' => $user->id,
+        ])->count() <= 0);
+        return $validate;
     }
 }

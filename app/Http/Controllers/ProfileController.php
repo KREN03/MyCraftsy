@@ -167,4 +167,14 @@ class ProfileController extends Controller
 
         return $monthly_keuangan_data_array;
     }
+
+    public function follow(Request $request){
+        $request->validate([
+            'following_id' => 'required'
+        ]);
+        $user = User::find(Auth::user()->id);
+        $user->following()->attach($request->following_id);
+
+        return back();
+    }
 }

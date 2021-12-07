@@ -34,6 +34,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::post('/getCategory', [HomeController::class, 'getCategories'])->name('api_getcategory');
 Route::get('/karya/add', [KaryaController::class, 'add'])->name('view_add_karya');
+Route::get('/karya/edit/{id}', [KaryaController::class, 'edit'])->name('view_edit_karya');
+Route::post('/karya/edit/{id}', [KaryaController::class, 'update'])->name('edit_karya');
 Route::post('/karya/add', [KaryaController::class, 'store'])->name('add_karya');
 Route::get('/karya/{id}', [KaryaController::class, 'index'])->name('detail_karya');
 Route::post('/comment/add/{work_id}', [CommentController::class, 'store'])->name('comment_add');
@@ -45,6 +47,7 @@ Route::get('/profile/update', [ProfileController::class, 'update'])->name('updat
 Route::post('/profile/update', [ProfileController::class, 'change'])->name('update_profile_db');
 Route::get('/profile/stats', [ProfileController::class, 'stats'])->name('stats_profile');
 Route::get('/getdatachart', [ProfileController::class, 'getMonthlyKeuanganData']);
+Route::post('/follow', [ProfileController::class, 'follow'])->name('follow_profile');
 // Competition
 Route::get('/competition', [CompetitionController::class, 'index'])->name('competition');
 Route::get('/competition/{slug}', [CompetitionController::class, 'detail'])->name('competition.detail');

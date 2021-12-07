@@ -4,7 +4,7 @@
             <img src="{{ auth()->user()->avatar() }}" alt="" class="rounded-circle">
         </div>
         <div class="user-profile col-md-4">
-            <div class="name d-flex align-items-center">
+            <div class="name d-flex align-items-center justify-content-between">
                 <p>{{ Auth::user()->name }}</p>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
@@ -27,8 +27,8 @@
             <p class="font-14">{{ Auth::user()->email }}</p>
             <div class="info d-flex justify-content-between font-14 mt-5">
                 <p>{{ Auth::user()->works->count() }} karya</p>
-                <p>1080 Pengikut</p>
-                <p>200 Mengikuti</p>
+                <p>{{ Auth::user()->followers->count() }} Pengikut</p>
+                <p>{{ Auth::user()->following->count() }} Mengikuti</p>
             </div>
         </div>
     </div>
