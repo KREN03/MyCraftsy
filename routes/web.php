@@ -64,13 +64,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/forum/{forum}', [ForumController::class, 'join'])->name('forum.join');
     Route::post('/forum/{forum}/post', [MessageController::class, 'store'])->name('forum.message');
     Route::post('/like_message/{message_id}', [LikeMessageController::class, 'like'])->name('like_message.add');
-
 });
 
 // Admin
 Route::middleware(['auth', 'ensureUserRole: admin'])->group(function() {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/competition', [AdminController::class, 'competition'])->name('competition.admin');
+    Route::get('/admin/competition/edit/{competition}', [AdminController::class, 'competition_detail'])->name('competition.admin.edit');
+    Route::post('/admin/competition/edit/{competition}', [AdminController::class, 'competition_edit'])->name('competition.edit');
+    Route::get('/admin/competition/add', [AdminController::class, 'competition_add'])->name('competition.admin.add');
+    Route::post('/admin/competition/store', [AdminController::class, 'competition_store'])->name('competition.admin.store');
+    Route::delete('/admin/competition/destroy/{competition}', [AdminController::class, 'competition_destroy'])->name('competition.destroy');
 });
 
 // socialite routes

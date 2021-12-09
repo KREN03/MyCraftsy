@@ -41,12 +41,39 @@
                         </div>
                     </div>
                     <p class="mt-3 post-detail">{{ $message->message }}</p>
-                    <div class="d-flex mt-4">
+                    <div class="d-flex my-4">
                         <input type="hidden" id="message_id" value="{{ $message->id }}">
-                        <i class="far fa-comment-dots icon ms-auto"></i>
+                        <i class="far fa-comment-dots icon ms-auto" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{ $message->id }}" aria-expanded="false" aria-controls="collapseExample-{{ $message->id }}"></i>
                         <i class="{{ $message->likeChoosed ? 'fas' : 'far' }} fa-thumbs-up icon ms-3" @if ($message->likeChoosed)
                             active="true"
                         @endif id="message-{{ $message->id }}" data-id="{{ $message->id }}"></i> <span class="like_count" id="likes_count-{{ $message->id }}">{{ $message->like_message->count() }}</span>
+                    </div>
+                    <div class="collapse" id="collapseExample-{{ $message->id }}">
+                        @foreach ($message->post_comment as $comment)
+                        <div class="card card-body mb-4">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ $comment->user->avatar }}" class="box-image-comment rounded-circle" alt="">
+                                <div class="profile-comment ms-3">
+                                    <span class="profile-name-comment d-block">{{ $comment->user->name }}</span>
+                                    <span class="post-date-comment">{{ $comment->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
+                            <p class="text-comment mt-3">
+                                {{ $comment->comment }}
+                            </p>
+                        </div>
+                        @endforeach
+                        <form action="">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                                </div>
+                                <div class="form-group w-100 ms-2 me-2">
+                                    <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
+                                </div>
+                                <i class="far fa-paper-plane"></i>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Competition;
+use App\Models\PostComment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CompetitionController extends Controller
+class PostCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +14,7 @@ class CompetitionController extends Controller
      */
     public function index()
     {
-        $competitions = Competition::all();
-        $categories = Category::all();
-
-        return view('competition.list.index', compact('competitions', 'categories'));
-    }
-
-    public function detail ($slug)
-    {
-        $competition = Competition::where('slug', $slug)->first();
-
-        return view('competition.detail.index', compact('competition'));
+        //
     }
 
     /**
@@ -53,10 +41,10 @@ class CompetitionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Competition  $competition
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Http\Response
      */
-    public function show(Competition $competition)
+    public function show(PostComment $postComment)
     {
         //
     }
@@ -64,10 +52,10 @@ class CompetitionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Competition  $competition
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Competition $competition)
+    public function edit(PostComment $postComment)
     {
         //
     }
@@ -76,10 +64,10 @@ class CompetitionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Competition  $competition
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Competition $competition)
+    public function update(Request $request, PostComment $postComment)
     {
         //
     }
@@ -87,10 +75,10 @@ class CompetitionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Competition  $competition
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Competition $competition)
+    public function destroy(PostComment $postComment)
     {
         //
     }
