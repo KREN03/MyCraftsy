@@ -79,7 +79,7 @@
                         @if ($comment->child->count() > 0)
                             <div class="collapse ms-5" id="reply{{ $comment->id }}">
                                 @foreach ($comment->child as $item)
-                                    <div class="card card-body">
+                                    <div class="card card-body mb-3">
                                         <div class="d-flex align-items-center">
                                             <img src="{{ $item->user->avatar }}" class="box-image-comment rounded-circle" alt="">
                                             <div class="profile-comment ms-3">
@@ -92,15 +92,16 @@
                                         </p>
                                     </div>
                                 @endforeach
-                                <form action="">
+                                <form action="{{ route('forum.message.reply.comment', [$message->id, $comment->id]) }}" method="POST">
+                                    @csrf
                                     <div class="d-flex align-items-center my-4">
                                         <div>
                                             <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
                                         </div>
                                         <div class="form-group w-100 ms-2 me-2">
-                                            <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
+                                            <input type="text" name="comment" id="comment" class="form-control" placeholder="Tambahkan Komentar">
                                         </div>
-                                        <i class="far fa-paper-plane"></i>
+                                        <button type="submit" class="send"><i class="far fa-paper-plane"></i></button>
                                     </div>
                                 </form>
                             </div>

@@ -99,4 +99,20 @@ class PostCommentController extends Controller
 
         return back()->with('sukses', 'Berhasil Mengirim Komentar');
     }
+
+    public function reply_comment (Request $request, Message $message, PostComment $parent)
+    {
+        $request->validate([
+            'comment' => 'required|string'
+        ]);
+
+        PostComment::create([
+            'comment' => $request->comment,
+            'message_id' => $message->id,
+            'parent_id' => $parent->id,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return back()->with('sukses', 'Berhasil Membalas Komentar');
+    }
 }
