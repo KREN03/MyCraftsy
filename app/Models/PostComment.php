@@ -12,7 +12,8 @@ class PostComment extends Model
     protected $fillable = [
         'comment',
         'message_id',
-        'user_id'
+        'user_id',
+        'parent_id'
     ];
 
     public function user ()
@@ -23,5 +24,10 @@ class PostComment extends Model
     public function message ()
     {
         return $this->belongsTo(Message::class);
+    }
+
+    public function child()
+    {
+        return $this->hasMany(PostComment::class, 'parent_id');
     }
 }
