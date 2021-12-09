@@ -50,15 +50,16 @@
                         @endif id="message-{{ $message->id }}" data-id="{{ $message->id }}"></i> <span class="like_count" id="likes_count-{{ $message->id }}">{{ $message->like_message->count() }}</span>
                     </div>
                     <div class="collapse" id="collapseExample-{{ $message->id }}">
-                        <form action="">
+                        <form action="{{ route('forum.message.comment', $message->id) }}" method="POST">
+                            @csrf
                             <div class="d-flex align-items-center mb-4">
                                 <div>
                                     <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
                                 </div>
                                 <div class="form-group w-100 ms-2 me-2">
-                                    <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
+                                    <input type="text" name="comment" id="comment" class="form-control" placeholder="Tambahkan Komentar">
                                 </div>
-                                <i class="far fa-paper-plane"></i>
+                                <button type="submit" class="send"><i class="far fa-paper-plane"></i></button>
                             </div>
                         </form>
                         @foreach ($message->post_comment as $comment)
@@ -76,47 +77,47 @@
                             <a class="text-decoration-none small mt-3" data-bs-toggle="collapse" href="#reply{{ $comment->id }}" role="button" aria-expanded="false" aria-controls="reply{{ $comment->id }}">balas</a>
                         </div>
                         @if ($comment->child->count() > 0)
-                        <div class="collapse ms-5" id="reply{{ $comment->id }}">
-                            @foreach ($comment->child as $item)
-                                <div class="card card-body">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ $item->user->avatar }}" class="box-image-comment rounded-circle" alt="">
-                                        <div class="profile-comment ms-3">
-                                            <span class="profile-name-comment d-block">{{ $item->user->name }}</span>
-                                            <span class="post-date-comment">{{ $item->created_at->diffForHumans() }}</span>
+                            <div class="collapse ms-5" id="reply{{ $comment->id }}">
+                                @foreach ($comment->child as $item)
+                                    <div class="card card-body">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ $item->user->avatar }}" class="box-image-comment rounded-circle" alt="">
+                                            <div class="profile-comment ms-3">
+                                                <span class="profile-name-comment d-block">{{ $item->user->name }}</span>
+                                                <span class="post-date-comment">{{ $item->created_at->diffForHumans() }}</span>
+                                            </div>
                                         </div>
+                                        <p class="text-comment mt-3">
+                                            {{ $item->comment }}
+                                        </p>
                                     </div>
-                                    <p class="text-comment mt-3">
-                                        {{ $item->comment }}
-                                    </p>
-                                </div>
-                            @endforeach
-                            <form action="">
-                                <div class="d-flex align-items-center my-4">
-                                    <div>
-                                        <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                                @endforeach
+                                <form action="">
+                                    <div class="d-flex align-items-center my-4">
+                                        <div>
+                                            <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                                        </div>
+                                        <div class="form-group w-100 ms-2 me-2">
+                                            <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
+                                        </div>
+                                        <i class="far fa-paper-plane"></i>
                                     </div>
-                                    <div class="form-group w-100 ms-2 me-2">
-                                        <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
-                                    </div>
-                                    <i class="far fa-paper-plane"></i>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
                         @else
-                        <div class="collapse ms-5" id="reply{{ $comment->id }}">
-                            <form action="">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                            <div class="collapse ms-5" id="reply{{ $comment->id }}">
+                                <form action="">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div>
+                                            <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                                        </div>
+                                        <div class="form-group w-100 ms-2 me-2">
+                                            <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
+                                        </div>
+                                        <i class="far fa-paper-plane"></i>
                                     </div>
-                                    <div class="form-group w-100 ms-2 me-2">
-                                        <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
-                                    </div>
-                                    <i class="far fa-paper-plane"></i>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
                         @endif
                         @endforeach
                     </div>

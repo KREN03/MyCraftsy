@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\PostComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostCommentController extends Controller
 {
@@ -81,5 +83,20 @@ class PostCommentController extends Controller
     public function destroy(PostComment $postComment)
     {
         //
+    }
+
+    public function comment(Request $request, Message $message)
+    {
+        $request->validate([
+            'comment' => 'required|string'
+        ]);
+
+        PostComment::create([
+            'comment' => $request->comment,
+            'message_id' => $message->id,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return back()->with('sukses', 'Berhasil Mengirim Komentar');
     }
 }
