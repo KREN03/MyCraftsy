@@ -107,15 +107,16 @@
                             </div>
                         @else
                             <div class="collapse ms-5" id="reply{{ $comment->id }}">
-                                <form action="">
-                                    <div class="d-flex align-items-center mb-4">
+                                <form action="{{ route('forum.message.reply.comment', [$message->id, $comment->id]) }}" method="POST">
+                                    @csrf
+                                    <div class="d-flex align-items-center my-4">
                                         <div>
                                             <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
                                         </div>
                                         <div class="form-group w-100 ms-2 me-2">
-                                            <input type="text" name="" id="" class="form-control" placeholder="Tambahkan Komentar">
+                                            <input type="text" name="comment" id="comment" class="form-control" placeholder="Tambahkan Komentar">
                                         </div>
-                                        <i class="far fa-paper-plane"></i>
+                                        <button type="submit" class="send"><i class="far fa-paper-plane"></i></button>
                                     </div>
                                 </form>
                             </div>
