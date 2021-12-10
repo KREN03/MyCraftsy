@@ -9,6 +9,7 @@ use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LikeMessageController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/forum/{forum}', [ForumController::class, 'join'])->name('forum.join');
     Route::post('/forum/{forum}/post', [MessageController::class, 'store'])->name('forum.message');
     Route::post('/like_message/{message_id}', [LikeMessageController::class, 'like'])->name('like_message.add');
+    Route::post('/message/{message}/comment', [PostCommentController::class, 'comment'])->name('forum.message.comment');
+    Route::post('/comment/{message}/{parent}/comment', [PostCommentController::class, 'reply_comment'])->name('forum.message.reply.comment');
 });
 
 // Admin

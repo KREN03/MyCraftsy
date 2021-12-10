@@ -153,3 +153,8 @@
 .text-comment {
     font-size: 14px;
 }
+
+.send {
+    background: none;
+    border: none;
+}
