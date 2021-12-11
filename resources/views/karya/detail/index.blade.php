@@ -1,5 +1,7 @@
 @extends('layout.template')
 
+@section('title', 'Detail Karya')
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/detail_karya.css') }}">
 @endsection
