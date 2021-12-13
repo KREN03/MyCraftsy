@@ -1,0 +1,13 @@
+.keranjang .title{
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.keranjang .table>tbody>tr>td{
+    font-size: 14px;
+}
+
+.keranjang .table th{
+    font-size: 14px;
+    border-bottom: none !important;
+}

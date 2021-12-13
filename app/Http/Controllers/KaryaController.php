@@ -6,6 +6,7 @@ use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use File;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 
 class KaryaController extends Controller
@@ -126,5 +127,17 @@ class KaryaController extends Controller
                 $work->category()->attach($category);
             }
         }
+    }
+
+    public function destroy(Request $request){
+        $work = Work::findOrFail($request->id);
+        $work->delete();
+
+        if($work){
+            return redirect()->back()->with(['success' => 'Work berhasil dihapus']);
+        }
+        
+        return redirect()->back()->with(['success' => 'Work berhasil dihapus']);
+
     }
 }

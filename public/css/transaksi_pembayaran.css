@@ -1,0 +1,66 @@
+.pembayaran>.head-title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.pembayaran>.child-title{
+    font-size: 15px;
+}
+
+.pembayaran .info-pembayaran>.title{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.pembayaran .info-pembayaran>.bank{
+    gap: 10px;
+}
+
+.pembayaran .info-pembayaran>.bank{
+    font-size: 14px;
+}
+
+.pembayaran .info-pembayaran>.bank>img{
+    width: 150px;
+    object-fit: contain;
+}
+
+.input-pembayaran>input{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.input-pembayaran{
+    border: 1px solid #1088A0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.input-pembayaran>p{
+    color: #1088A0;
+    transition: 0.5s;
+}
+
+.input-pembayaran>p>svg{
+    fill: #1088A0;
+    transition: 0.5s;
+}
+
+.input-pembayaran:hover{
+    background: #1088A0;
+    cursor: pointer;
+}
+
+.input-pembayaran:hover>p{
+    color: #fff;
+}
+
+.input-pembayaran:hover>p>svg{
+    fill: #fff;
+}

@@ -180,8 +180,18 @@
     }
 }
 
+.image-and-video:hover  .info-work{
+    bottom: 0;
+}
+
 .info-work{
+    bottom: -100px;
+    background: #000;
+    left: 0;
+    transition: all 1s;
+    width: 100%;
     gap: 20px;
+    z-index: 101;
 }
 
 .like>svg{
@@ -198,4 +208,23 @@
 
 .like, .comment-icon{
     gap: 10px;
+}
+
+.big-like{
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.big-like .icon-likes{
+    transform: scale(4);
+    opacity: 0;
+    transition: 1s;
+}
+
+
+.big-like .icon-likes.active{
+    transform: scale(6);
+    opacity: 1;
 }

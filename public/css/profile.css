@@ -1,26 +1,25 @@
-.profile{
-
+.profile {
 }
 
-.profile .bio-profile{
+.profile .bio-profile {
     /* gap: 20px; */
 }
 
-.profile .bio-profile .image img{
+.profile .bio-profile .image img {
     width: 155px;
     height: 155px;
 }
 
-.profile .bio-profile .user-profile .name{
+.profile .bio-profile .user-profile .name {
     gap: 10px;
 }
 
-.profile .bio-profile .user-profile .name p{
+.profile .bio-profile .user-profile .name p {
     font-size: 18px;
     font-weight: 600;
 }
 
-.profile .bio-profile .user-profile .info{
+.profile .bio-profile .user-profile .info {
     gap: 10px;
 }
 .sidebar {
@@ -85,13 +84,18 @@
     width: 265px;
     margin-bottom: 10px;
 }
-.grid-item--width2{
+.grid-item--width2 {
     width: 500px;
     overflow: hidden;
 }
 
 .grid-item img {
     width: 100%;
+}
+
+.grid-item:hover img {
+    transform: scale(1.25);
+    transition: all 1.5s;
 }
 
 .link-kategori {
@@ -118,18 +122,16 @@
     /* height: auto !important; */
 }
 
-#button-profile{
+#button-profile {
     cursor: pointer;
     fill: white;
 }
 
 .banner-item-button {
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    height: 100%;
     background: rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: flex-start;
@@ -139,18 +141,18 @@
     z-index: 999;
 }
 
-.banner-item-button>.dropdown-option{
+.banner-item-button > .dropdown-option {
     background: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.banner-item-button>.dropdown-option:hover{
+.banner-item-button > .dropdown-option:hover {
     background: rgb(190, 190, 190);
 }
 
-.banner-item-button>.dropdown-option>.menu{
+.banner-item-button > .dropdown-option > .menu {
     background: rgb(243, 243, 243);
     border: 1px solid rgb(172, 172, 172);
     margin-top: 120px;
@@ -158,13 +160,24 @@
     margin-left: 80px;
 }
 
-.banner-item-button>.dropdown-option>.menu>a{
+.banner-item-button > .dropdown-option > .menu a {
     text-decoration: none;
     padding: 10px;
     color: #000;
 }
 
+.banner-item-button > .dropdown-option > .menu a:hover {
+    background: rgb(185, 185, 185);
+}
 
-.banner-item-button>.dropdown-option>.menu>a:hover{
+.banner-item-button > .dropdown-option > .menu button {
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    outline: none;
+    color: #000;
+}
+
+.banner-item-button > .dropdown-option > .menu button:hover {
     background: rgb(185, 185, 185);
 }
