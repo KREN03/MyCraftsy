@@ -15,4 +15,19 @@ class Forum extends Model
         'user_id',
         'thumbnail'
     ];
+
+    public function message()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function anggota()
+    {
+        return $this->belongsToMany(User::class, 'anggota_forums')->withTimestamps()->using(AnggotaForum::class);
+    }
 }

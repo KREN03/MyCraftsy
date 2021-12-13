@@ -41,4 +41,9 @@ class HomeController extends Controller
             ->get();
         return response()->json($data);
     }
+
+    public function dashboard()
+    {
+        return view('admin.layout.template');
+    }
 }

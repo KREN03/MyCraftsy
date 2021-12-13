@@ -19,14 +19,6 @@ class CompetitionController extends Controller
         $competitions = Competition::all();
         $categories = Category::all();
 
-        if(Auth()->user()) {
-            if (Auth()->user()->is_admin) {
-                return 'Admin Competition';
-            } else {
-                return view('competition.list.index', compact('competitions', 'categories'));
-            }
-        }
-
         return view('competition.list.index', compact('competitions', 'categories'));
     }
 

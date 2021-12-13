@@ -7,10 +7,10 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid" style="background-image: url('{{ $forum->thumbnail }}')">
     <div class="container d-flex h-100">
-        <div class="mt-auto">
-            <h1 class="display-competition">Kompetisi</h1>
-            <p class="text-white text-opacity-75 sub-text">Forum ini bertujuan berbagi pengetahuan dan bertanya seputar karya lukis</p>
-            <p class="text-white text-opacity-75 fw-light sub-sub-text">18,2rb anggota grup</p>
+        <div class="mt-auto mb-4">
+            <h1 class="display-competition">{{ $forum->name }}</h1>
+            <p class="text-white text-opacity-75 sub-text">{{ $forum->description }}</p>
+            <p class="text-white text-opacity-75 fw-light sub-sub-text">{{ $forum->anggota->count() }} anggota grup</p>
         </div>
     </div>
 </div>
@@ -30,117 +30,152 @@
                     </div>
                 </div>
             </div>
+            @foreach ($messages as $message)
             <div class="row mt-50 buat-kiriman p-2">
                 <div class="col-md-12">
                     <div class="d-flex align-items-center">
                         <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-profile" alt="">
                         <div class="profile-post ms-3">
-                            <span class="profile-name-forum d-block">Jerry Andrianto Pangaribuan</span>
-                            <span class="post-date">22 Oktober 2021</span>
+                            <span class="profile-name-forum d-block">{{ $message->user->name }}</span>
+                            <span class="post-date">{{ $message->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
-                    <p class="mt-3 post-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iusto pariatur delectus provident quae quo, ab obcaecati voluptate magnam atque iure! Explicabo quisquam accusamus consectetur ut natus aliquam impedit omnis odit voluptatibus commodi. Odio doloribus sit, deleniti provident illo tempora, incidunt nihil eligendi fugit asperiores nulla! Quas aut minima laboriosam.</p>
-                    <div class="d-flex mt-4">
-                        <i class="far fa-comment-dots icon ms-auto"></i>
-                        <i class="far fa-thumbs-up icon ms-3"></i>
+                    <p class="mt-3 post-detail">{{ $message->message }}</p>
+                    <div class="d-flex my-4">
+                        <input type="hidden" id="message_id" value="{{ $message->id }}">
+                        <i class="far fa-comment-dots icon ms-auto" data-bs-toggle="collapse" data-bs-target="#collapseExample-{{ $message->id }}" aria-expanded="false" aria-controls="collapseExample-{{ $message->id }}"></i>
+                        <span class="like_count">{{ $message->post_comment->count() }}</span>
+                        <i class="{{ $message->likeChoosed ? 'fas' : 'far' }} fa-thumbs-up icon ms-3" @if ($message->likeChoosed)
+                            active="true"
+                        @endif id="message-{{ $message->id }}" data-id="{{ $message->id }}"></i> <span class="like_count" id="likes_count-{{ $message->id }}">{{ $message->like_message->count() }}</span>
+                    </div>
+                    <div class="collapse" id="collapseExample-{{ $message->id }}">
+                        <form action="{{ route('forum.message.comment', $message->id) }}" method="POST">
+                            @csrf
+                            <div class="d-flex align-items-center mb-4">
+                                <div>
+                                    <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                                </div>
+                                <div class="form-group w-100 ms-2 me-2">
+                                    <input type="text" name="comment" id="comment" class="form-control" placeholder="Tambahkan Komentar">
+                                </div>
+                                <button type="submit" class="send"><i class="far fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                        @foreach ($message->post_comment as $comment)
+                        <div class="card card-body mb-4">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ $comment->user->avatar }}" class="box-image-comment rounded-circle" alt="">
+                                <div class="profile-comment ms-3">
+                                    <span class="profile-name-comment d-block">{{ $comment->user->name }}</span>
+                                    <span class="post-date-comment">{{ $comment->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
+                            <p class="text-comment mt-3">
+                                {{ $comment->comment }}
+                            </p>
+                            <a class="text-decoration-none small mt-3" data-bs-toggle="collapse" href="#reply{{ $comment->id }}" role="button" aria-expanded="false" aria-controls="reply{{ $comment->id }}">balas</a>
+                        </div>
+                        @if ($comment->child->count() > 0)
+                            <div class="collapse ms-5" id="reply{{ $comment->id }}">
+                                @foreach ($comment->child as $item)
+                                    <div class="card card-body mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ $item->user->avatar }}" class="box-image-comment rounded-circle" alt="">
+                                            <div class="profile-comment ms-3">
+                                                <span class="profile-name-comment d-block">{{ $item->user->name }}</span>
+                                                <span class="post-date-comment">{{ $item->created_at->diffForHumans() }}</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-comment mt-3">
+                                            {{ $item->comment }}
+                                        </p>
+                                    </div>
+                                @endforeach
+                                <form action="{{ route('forum.message.reply.comment', [$message->id, $comment->id]) }}" method="POST">
+                                    @csrf
+                                    <div class="d-flex align-items-center my-4">
+                                        <div>
+                                            <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                                        </div>
+                                        <div class="form-group w-100 ms-2 me-2">
+                                            <input type="text" name="comment" id="comment" class="form-control" placeholder="Tambahkan Komentar">
+                                        </div>
+                                        <button type="submit" class="send"><i class="far fa-paper-plane"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        @else
+                            <div class="collapse ms-5" id="reply{{ $comment->id }}">
+                                <form action="{{ route('forum.message.reply.comment', [$message->id, $comment->id]) }}" method="POST">
+                                    @csrf
+                                    <div class="d-flex align-items-center my-4">
+                                        <div>
+                                            <img src="{{ Auth()->user()->avatar() }}" alt="" class="box-image rounded-circle">
+                                        </div>
+                                        <div class="form-group w-100 ms-2 me-2">
+                                            <input type="text" name="comment" id="comment" class="form-control" placeholder="Tambahkan Komentar">
+                                        </div>
+                                        <button type="submit" class="send"><i class="far fa-paper-plane"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
-            <div class="row mt-50 buat-kiriman p-2">
-                <div class="col-md-12">
-                    <div class="d-flex align-items-center">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-profile" alt="">
-                        <div class="profile-post ms-3">
-                            <span class="profile-name-forum d-block">Jerry Andrianto Pangaribuan</span>
-                            <span class="post-date">22 Oktober 2021</span>
-                        </div>
-                    </div>
-                    <p class="mt-3 post-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iusto pariatur delectus provident quae quo, ab obcaecati voluptate magnam atque iure! Explicabo quisquam accusamus consectetur ut natus aliquam impedit omnis odit voluptatibus commodi. Odio doloribus sit, deleniti provident illo tempora, incidunt nihil eligendi fugit asperiores nulla! Quas aut minima laboriosam.</p>
-                    <div class="d-flex mt-4">
-                        <i class="far fa-comment-dots icon ms-auto"></i>
-                        <i class="far fa-thumbs-up icon ms-3"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-50 buat-kiriman p-2">
-                <div class="col-md-12">
-                    <div class="d-flex align-items-center">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-profile" alt="">
-                        <div class="profile-post ms-3">
-                            <span class="profile-name-forum d-block">Jerry Andrianto Pangaribuan</span>
-                            <span class="post-date">22 Oktober 2021</span>
-                        </div>
-                    </div>
-                    <p class="mt-3 post-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iusto pariatur delectus provident quae quo, ab obcaecati voluptate magnam atque iure! Explicabo quisquam accusamus consectetur ut natus aliquam impedit omnis odit voluptatibus commodi. Odio doloribus sit, deleniti provident illo tempora, incidunt nihil eligendi fugit asperiores nulla! Quas aut minima laboriosam.</p>
-                    <div class="d-flex mt-4">
-                        <i class="far fa-comment-dots icon ms-auto"></i>
-                        <i class="far fa-thumbs-up icon ms-3"></i>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="col-lg-4 ps-lg-4 mt-lg-0 mt-md-4 mt-sm-4 mt-4">
             <div class="row sticky-lg-top mt-lg-50">
                 <div class="col-md-12 buat-kiriman p-3">
                     <h5 class="fw-bold">Forum Lainnya</h5>
                     <hr class="line-other-forum mb-5">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="image">
-                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-other-forum" alt="">
+                    @foreach ($forums as $item)
+                    <a href="{{ route('forum.detail', $item->id) }}" class="text-decoration-none">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="image">
+                                <img src="{{ $item->thumbnail }}" class="rounded-circle img-other-forum" alt="">
+                            </div>
+                            <div class="profile-post ms-2">
+                                <span class="profile-name-forum d-block">{{ $item->name }}</span>
+                                <span class="other-forum-desc">{{ $item->description }}</span>
+                            </div>
                         </div>
-                        <div class="profile-post ms-2">
-                            <span class="profile-name-forum d-block">Programmer Indonesia</span>
-                            <span class="other-forum-desc">Berbagi pengetahuan tentang dunia pemrograman dan pengembangan aplikasi</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="image">
-                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-other-forum" alt="">
-                        </div>
-                        <div class="profile-post ms-2">
-                            <span class="profile-name-forum d-block">Programmer Indonesia</span>
-                            <span class="other-forum-desc">Berbagi pengetahuan tentang dunia pemrograman dan pengembangan aplikasi</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="image">
-                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-other-forum" alt="">
-                        </div>
-                        <div class="profile-post ms-2">
-                            <span class="profile-name-forum d-block">Programmer Indonesia</span>
-                            <span class="other-forum-desc">Berbagi pengetahuan tentang dunia pemrograman dan pengembangan aplikasi</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="image">
-                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" class="rounded-circle img-other-forum" alt="">
-                        </div>
-                        <div class="profile-post ms-2">
-                            <span class="profile-name-forum d-block">Programmer Indonesia</span>
-                            <span class="other-forum-desc">Berbagi pengetahuan tentang dunia pemrograman dan pengembangan aplikasi</span>
-                        </div>
-                    </div>
+                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        <form action="{{ route('forum.message', $forum->id) }}" method="POST">
+            @csrf
+            <div class="modal-body">
+                <h5 class="modal-title fw-bold" id="exampleModalLabel">Buat Kiriman</h5>
+                <p>Bagikan kiriman ke forum {{ $forum->name }}</p>
+                <div class="mb-3 mt-5">
+                    <label for="message" class="form-label fw-bold">Kiriman Anda</label>
+                    <textarea class="form-control" name="message" id="message" rows="8" placeholder="Masukkan Kiriman anda"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary rounded-pill px-4">Buat Kiriman</button>
+            </div>
+        </form>
       </div>
     </div>
   </div>
+@endsection
+
+@section('script')
+<script src="{{ asset('js/message-like.js') }}"></script>
 @endsection
