@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryaController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::get('/karya/edit/{id}', [KaryaController::class, 'edit'])->name('view_edi
 Route::post('/karya/edit/{id}', [KaryaController::class, 'update'])->name('edit_karya');
 Route::post('/karya/add', [KaryaController::class, 'store'])->name('add_karya');
 Route::get('/karya/{id}', [KaryaController::class, 'index'])->name('detail_karya');
+Route::post('/karya/delete', [KaryaController::class, 'destroy'])->name('destroy_karya');
 Route::post('/comment/add/{work_id}', [CommentController::class, 'store'])->name('comment_add');
 Route::post('/like/{work_id}', [LikeController::class, 'like'])->name('like_add');
 
@@ -48,6 +50,13 @@ Route::post('/profile/update', [ProfileController::class, 'change'])->name('upda
 Route::get('/profile/stats', [ProfileController::class, 'stats'])->name('stats_profile');
 Route::get('/getdatachart', [ProfileController::class, 'getMonthlyKeuanganData']);
 Route::post('/follow', [ProfileController::class, 'follow'])->name('follow_profile');
+
+// transaksi
+Route::get('/transaksi/informasi', [TransactionController::class, 'informasi'])->name('transaksi_informasi');
+Route::get('/transaksi/keranjang', [TransactionController::class, 'keranjang'])->name('transaksi_keranjang');
+Route::get('/transaksi/pembayaran', [TransactionController::class, 'pembayaran'])->name('transaksi_pembayaran');
+
+
 // Competition
 Route::get('/competition', [CompetitionController::class, 'index'])->name('competition');
 Route::get('/competition/{slug}', [CompetitionController::class, 'detail'])->name('competition.detail');
