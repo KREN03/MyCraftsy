@@ -70,36 +70,41 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Message::class, 'like_messages')->withTimestamps()->using(LikeMessage::class);
     }
 
-    public function works(){
+    public function works()
+    {
         return $this->hasMany(Work::class);
     }
 
-    public function likes(){
+    public function likes()
+    {
         return $this->hasMany(Like::class);
     }
 
-    public function avatar () {
+    public function avatar()
+    {
         if ($this->avatar) {
-            if(Str::start('https', $this->avatar)) {
+            if (Str::startsWith('https', explode(':', $this->avatar))) {
                 return $this->avatar;
             } else {
                 return Storage::url('profile/' . $this->avatar);
             }
-        } else {
-            return asset('image/user_default.png');
         }
+        return asset('image/user_default.png');
     }
 
-    public function following() {
+    public function following()
+    {
         return $this->belongsToMany(User::class, 'followers', 'parent_id', 'child_id');
     }
 
     // users that follow this user
-    public function followers() {
+    public function followers()
+    {
         return $this->belongsToMany(User::class, 'followers', 'child_id', 'parent_id');
     }
 
-    public function isFollowers(User $user){
+    public function isFollowers(User $user)
+    {
         $validate = (Follower::where([
             'parent_id' => Auth::user()->id,
             'child_id' => $user->id,
