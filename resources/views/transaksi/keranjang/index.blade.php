@@ -32,7 +32,9 @@
                                     <td>Otto</td>
                                     <td>17-03-2002</td>
                                     <td>
-                                        <button class="primary-button">Bayar</button>
+                                        <a href="{{ route('transaksi_pembayaran') }}">
+                                            <button class="primary-button">Bayar</button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endfor
